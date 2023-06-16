@@ -531,6 +531,26 @@ PoseX是可以在Stable Diffuison WebUI直接拉人物骨架，再配合ControlN
 
 
 
+##  face editor
+
+sd的面部编辑器。它可用于修复由 Stable Diffusion 生成的图像中的破损面孔。
+
+这是[AUTOMATIC1111 的 Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)的[扩展](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Extensions)。
+
+该软件改进了这些特征中的面部图像：
+
+- txt2img
+- img2img
+- 批处理（批次计数/批次大小）
+- img2img批处理
+
+
+
+1. 打开“扩展”选项卡，然后打开“从 URL 安装”选项卡。
+2. 在“扩展的 git 存储库的 URL”字段中 输入“ [https://github.com/ototadana/sd-face-editor.git ”。](https://github.com/ototadana/sd-face-editor.git)
+
+https://github.com/ototadana/sd-face-editor
+
 # 内建功能
 
 ## 文生图
@@ -1247,3 +1267,179 @@ accelerate launch main.py --load_json_path "/home/user/trainingconfig.json"
 1. 再加上训练时使用的提示词，即可生成使用LoRA风格的人物。
 
 ![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-4.webp)
+
+
+
+
+
+# 模型推荐
+
+## 人物
+
+https://civitai.com/models/14633  3moon Doll_sunlight (3moonDollSunlight_3moonDollSunlight 下载)
+
+https://civitai.com/models/6424 ChilloutMix （chilloutmix_NiPrunedFp32Fix.safetensors下载）
+
+https://civitai.com/models/43331/majicmix-realistic majicMIX realistic （majicmixRealistic_v5.safetensors 下载）
+
+https://civitai.com/models/18523/magmix  MagMix (下载)
+
+https://civitai.com/models/71734 Dayu_AisaMIX__v1
+
+https://civitai.com/models/9052 LOFI   增强线条 
+
+https://civitai.com/models/48524/LEAU  LEAU
+
+https://civitai.com/models/22922/lyriel   Lyriel
+
+https://civitai.com/models/59341?modelVersionId=65309    融入了GuoFeng3.2, fashionGirl_v52, chilloutmixss30_v30, iu_V35, koreanDollLikeness_v15.
+
+https://civitai.com/models/4201  Paragon 
+
+https://civitai.com/models/3627   Protogen v2.2 (Anime) Official Release
+
+https://civitai.com/models/47274  XXMix_9realistic
+
+https://civitai.com/models/25494/brabeautiful-realistic-asians-v5  Beautiful Realistic Asians
+
+
+
+## 动漫
+
+https://civitai.com/models/9409/or-anything-v5ink Anything 
+
+https://civitai.com/models/14305/heavenorangemix  HeavenOrangeMix
+
+https://civitai.com/models/4468?modelVersionId=57618 Counterfeit-V3.0
+
+https://civitai.com/models/48671?modelVersionId=56009   Dark Sushi 2.5D 大颗寿司2.5D
+
+https://civitai.com/models/36520/ghostmix  GhostMix （下载）
+
+https://civitai.com/models/7240/meinamix MeinaMix
+
+https://civitai.com/models/9139/checkpointyesmix  【Checkpoint】YesMix
+
+https://civitai.com/models/4437/abyssorangemix2-sfwsoft-nsfw : AbyssOrangeMix2 - SFW/Soft NSFW
+
+
+
+## 2.5D
+
+https://civitai.com/models/44219/camelliamix25d  CamelliaMIx_2.5D
+
+https://civitai.com/models/10415/3-guofeng3 国风3 GuoFeng3(下载)
+
+LuckyStrikeMix
+
+https://civitai.com/models/85201/lustermix  LusterMix
+
+https://civitai.com/models/10028/neverending-dream-ned NED
+
+https://civitai.com/models/38942/dilmuratreal Dilmurat_Real
+
+https://civitai.com/models/51711/icerealistic   icerealistic   512x832 和 576x768 分辨率下效果最佳  DPM++ SDE Karras 28 步或 DM++ 2M 50 步
+
+# Lora
+
+###  服饰
+
+https://civitai.com/models/81425/animeandrealisticchinese-traditional-clothing-collection  【Anime&Realistic】Chinese Traditional Clothing Collection 中国传统服饰合集
+
+https://civitai.com/models/72193/yunxi  yunxi 云曦 完美世界
+
+
+
+### 人物 
+
+https://civitai.com/models/33208?modelVersionId=90115  FilmGirl 胶片风 Film Grain LoRA & LoHA  (FilmVelvia2.safetensors下载）
+
+https://civitai.com/models/77710/normal-korean-girl-face-chilloutmix-base-lora  Normal Korean girl face, Chilloutmix base lora （下载)
+
+https://civitai.com/models/44310/dream-based-on-guofeng3  梦 Dream (Based On GuoFeng3)  国风lora(下载)
+
+### Embedding
+
+https://civitai.com/models/4514?modelVersionId=5119   Pure Eros Face  **good-looking girl faces**(已下载)
+
+### UI整合包
+
+秋叶整合包：适合新手使用，功能齐备，一键启动，方便后期更新管理
+
+- 整合包地址：https://www.bilibili.com/video/BV17d4y1C73R/
+- 启动器地址：https://www.bilibili.com/video/BV1ne4y1V7QU/
+
+星空整合包：适合有一定基础的朋友，简约且全面，搭载多种插件
+
+整合包地址：https://www.bilibili.com/video/BV1MM411t7XX/
+
+
+
+
+
+
+
+# 实战
+
+## 测试
+
+```
+正向
+A girl, walking in the forest, the sun fell on her body,
+
+补充
+(masterpiece:1,2), best quality, masterpiece, highres, original, extremely detailed wallpaper, perfect lighting,(extremely detailed CG:1.2), drawing, paintbrush,
+
+再次补充
+looking at viewer, close-up, upper body,
+
+
+反向
+NSFW, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, (ugly:1.331), (duplicate:1.331), (morbid:1.21), (mutilated:1.21), (tranny:1.331), mutated hands, (poorly drawn hands:1.5), blurry, (bad anatomy:1.21), (bad proportions:1.331), extra limbs, (disfigured:1.331), (missing arms:1.331), (extra legs:1.331), (fused fingers:1.61051), (too many fingers:1.61051), (unclear eyes:1.331), lowers, bad hands, missing fingers, extra digit,bad hands, missing fingers, (((extra arms and legs))),
+```
+
+## 推荐
+
+1:万象熔炉 Anything 二次元类，最受欢迎的二次元融合模型之一
+
+发布： civitail.com/models/9409
+
+2: Counterfeit 二次元类 精致感满满的插画风模型
+
+发布  civitail.com/models/4468
+
+3: Dreamlike Diffusion
+
+发布  civitail.com/models/1274
+
+4：Deliberate
+
+真实类 非常精细，全面的写实风格模型
+
+5：Realistic vision
+
+真实类 朴素且有整活空间的写实模型
+
+发布 civitail.com/models/4201
+
+6：LOFI 
+
+真实类， 精致照片级任务专精模型
+
+发布 civitail.com/models/9052
+
+7：NeverEnding Dream (NED)
+
+2.5D风 非常时候 三次元化的2.5D模型
+
+发布 civitail.com/models/10028
+
+8： Protogen X3.4(Photorealism)
+
+2.5D风 优秀的照片效果和创业发挥空间
+
+发布 civitail.com/models/3666
+
+9：国风3 GUO feng3
+
+2.5D 实现文化输出的国风精致模型
