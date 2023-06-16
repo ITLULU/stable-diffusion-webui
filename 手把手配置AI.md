@@ -474,3 +474,776 @@ Preprocessor是先将上传的图片处理过一轮，例如`Scribbles`会将彩
 点选单张图片，查看使用过的提示词，还可以给予星级评分。
 
 ![img](images\stable-diffusion-webui-images-browser-2.webp)
+
+
+
+## mov2mov
+
+- 扩充功能来源： [Scholar01/sd-webui-mov2mov](https://github.com/Scholar01/sd-webui-mov2mov)
+
+＊需要先安装ControlNet才能使用这个扩充功能。
+
+将影片逐一抽出画格，使用ControlNet生图，然后再自
+
+动合成新影片。可以设定输出的画格率，将人物单独处理。
+
+切换到mov2mov页面，输入提示词, 再上传影片。
+
+![img](images\mov2mov-1.webp)
+
+ 在下面设定输出影片的长宽。生图的长宽比例应与原始影片一致。
+
+![img](images\mov2mov-2.webp)
+
+最下面是单独用ControlNet处理人物的选项，可以改善动作侦测的精度。
+
+![img](images\mov2mov-3.webp)
+
+点选右上角Generate，即会开始生成。成品位于主程式下的`/outputs/mov2mov-images`目录。
+
+## 监控系统
+
+- 扩充功能来源： [vladmandic/sd-extension-system-info](https://github.com/vladmandic/sd-extension-system-info)
+
+此扩充功能给Stable Diffusion WebUI新增一个监控系统信息的页面，显示主程序版本、系统信息、GPU、RAM、使用的模型、使用的命令列参数等等。
+
+![img](images\sd-extension-system-info-1.webp)
+
+点击下面的Run benchmark可以跑分测试系统性能，有助于评估主程序更新后性能是否有变化。 点击Submit results将结果回报到 [Vladimir Mandic的网站](https://vladmandic.github.io/sd-extension-system-info/pages/benchmark.html)。
+
+![img](images\sd-extension-system-info-2.webp)
+
+## 骨架人偶
+
+- 扩充功能来源： [hnmr293/posex](https://github.com/hnmr293/posex)
+
+＊需要先安装ControlNet才能使用这个扩充功能。
+
+PoseX是可以在Stable Diffuison WebUI直接拉人物骨架，再配合ControlNet生成姿势的扩充功能。
+
+类似的扩充功能为 [OpenPose Editor](https://github.com/fkunn1326/openpose-editor)，差别在于PoseX可以旋转放大。
+
+1. 切换至Extensions页面，点选Install From URL，URL输入`https://github.com/hnmr293/posex.git`，按下Install。接着重启WebUI。
+2. 开启文生图的页面，点选右下角PoseX，点选Send this image to ControlNet
+3. 在下面的ControlNet，点选Enabled，preprocessor选取`none`，model选`openpose`，不需要上传图片。![img](images\posex-3.webp)
+4. 回到上面的PoseX，调整人物姿势。左键点选移动，滚轮放大缩小，对模型左键点二下即可用右键移动单个骨架。![img](images\posex-4.webp)
+5. 填入正负向提示词，即会按照PoseX的姿势来生成图片。![img](images\posex-5.webp)
+
+
+
+# 内建功能
+
+## 文生图
+
+文生图(txt2image)即为让AI按照文字叙述生图。
+
+开启Stable Diffusion WebUI网页后，第一个看到的是以下画面，这就是文生图的页面。生图流程为在左上角填入提示词，勾选左下角的生图参数，再点选右上角生成图片。其余SD WebUI的功能用法大抵都按照此逻辑设计，有些参数是通用的。
+
+### 参数解说
+
+- Stable Diffusion checkpoint [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#stable-diffusion-checkpoint)
+
+目前使用的存档点模型。
+
+- Prompts 提示词 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#prompts-提示詞)
+
+这是填入正向与负向提示词的栏位。
+
+- Sampling Methods 取样方法 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#sampling-methods-取樣方法)
+
+Sampling Methods即为取样方法，各种方法得出的结果不太一样。
+
+UniPC是2023年发表的取样方法。
+
+DDIM和PLMS是2022年随Stable Diffusion v1发表的取样方法。
+
+若要兼顾品质与速度，请优先试试这三种取样方法：UniPC、DPM++ 2M Karras、Euler a。
+
+- Sampling Steps 取样步数 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#sampling-steps-取樣步數)
+
+取样步数建议值至少为20，在使用Euler a和UniPC取样方法的时候就有很好效果。
+
+相对的DDIM需要80以上的取样步数才会有好结果。
+
+- Restore faces 脸部修复 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#restore-faces-臉部修復)
+
+使用脸部修复模型改善脸部生成效果。预设使用CodeFormer，可在Settings切换为GFPGAN。
+
+- Tiling 平铺 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#tiling-平鋪)
+
+生成类似地板花纹一样可连续的图片。
+
+- Hires_fix 高画质修复 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#hires_fix-高畫質修復)
+
+可以提升图片的画质，但是会耗费更多VRAM。
+
+- Upscaler [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#upscaler)
+
+要使用的放大器。
+
+- Hires steps [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#hires-steps)
+
+高画质修复步数。
+
+- Denoising strength [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#denoising-strength)
+
+降噪强度。
+
+- Upscale by [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#upscale-by)
+
+缩放系数。
+
+- Width x Height 图片宽高 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#width-x-height-圖片寬高)
+
+生成图片的宽高，尺寸越大品质越好，但越会吃掉更多VRAM。
+
+预设宽高为512x512，新版的建议可以试试768x768。
+
+其余可用的宽高比(ratio)请参考下表。 [图片来源](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/1025#discussioncomment-3727588)
+
+![img](images\text-to-image-2.webp)
+
+- CFG Scale [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#cfg-scale)
+
+CFG Scale即Classifier-free guidance scale
+
+AI生图与你给的提示词的相关度，数值越高越会按照你说的内容下去生图。
+
+- Batch count [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#batch-count)
+
+设定按左上角的Generate后要生成多少次的图片。
+
+- Batch size [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#batch-size)
+
+设定按左上角的Generate后，一次生成内要算多少图片。通常要一次算多张图，调整Batch count就够了，Batch size的值维持为1。
+
+- Seed 种子码 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#seed-種子碼)
+
+生成图片的种子码。将种子码保存下来有助于保留生图的风格。
+
+点选骰子图示，设定成`-1`即为重置种子码；回收符号则是叫出上一次生图所使用的种子码。
+
+- Seeds Extra [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#seeds-extra)
+
+测试更多种子码变化之用。
+
+- Variation seed [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#variation-seed)
+
+- Variation strength [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#variation-strength)
+
+变化强度，此值越高，生图结果越不可预料。
+
+- Resize seed from width [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#resize-seed-from-width)
+
+- Resize seed from height [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#resize-seed-from-height)
+
+- Scripts [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#scripts)
+
+载入使用者撰写的指令稿。内建的有：
+
+- Prompt Matrix：会生出一个表格图片，用于比对不同提示词生图的效果
+- Prompts from files or textbox：从写好提示词的档案生成图片。
+- X/Y/Z plot：用于比对不同提示词、取样方法、CFG Scale、种子码的组合所生图的效果。
+
+### 储存提示词 
+
+右上角可以储存与载入生图提示词。
+
+5个按钮由左至依序为：1. 叫出上次生图使用的设定值2. 清空提示词3. 启用 [额外网路](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/extra-networks/)4. 套用选中的风格5. 储存目前的提示词
+
+储存的提示词此处称为风格(styles)
+
+下方的Styles列表即为储存的提示词。点选储存的提示词(可多选)，再点选上面的剪贴板图示，即会将该提示词组合加到左边的提示词栏位。
+
+
+
+## 图生图
+
+图生图(img2img)是让AI参照现有的图片生图，源自InstructPix2Pix技术。
+
+例如：上传一张真人照片，让AI把他改绘成动漫人物；上传画作线稿，让AI自动上色；上传一张黑白照，让AI把它修复成彩色相片。
+
+这个功能位于「Img2img」的页签。
+
+### 参数解说 
+
+部份参数与文生图的参数重叠，这里不赘述。
+
+- Resize mode 裁切模式 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/image-to-image/#resize-mode-裁切模式)
+
+决定要对上传的图片做何种操作。
+
+上传的图片最好与生图设定的一致。
+
+- Just resize：调整图片为生图设定的宽高。若上传图片的宽高与生成设定的宽高不一致，则该图片会被压扁
+- Crop and resize：裁切图片以符合生图的宽高
+- Resize and fill：裁切并调整图片宽高，若上传图片的宽高与生成设定的宽高不一致，则多出来的区域会自动填满。
+- Just resize (latent upscale)：调整图片大小为生图设定的宽高，并使用潜在空间放大。
+
+- Resize to [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/image-to-image/#resize-to)
+
+依照填入的宽高来生图。
+
+- Resize by [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/image-to-image/#resize-by)
+
+依照填入的缩放系数来生图，然后缩放图片。
+
+- Denoising strength 降噪强度 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/image-to-image/#denoising-strength-降噪強度)
+
+数值越小，生成的图与原图越相似，可用来微调图片。
+
+- Interrogate Deepboooru [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/image-to-image/#interrogate-deepboooru)
+
+上传图片后，用Danbooru图库资料判别图片并自动填入提示词。需要注意Deepboooru训练的图像数量有限，它顶多只能用来认图片的场景和人物tag，无法准确标出最新的动漫角色。
+
+![img](images\image-to-image-2.webp)
+
+初次使用的时候，Stable Diffusion WebUI会自动下载模型。
+
+- Interrogate CLIP [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/image-to-image/#interrogate-clip)
+
+类似Deepbooru用途，不过较适合判别真人照片内容。
+
+## 内补绘图
+
+内补绘制(inpaint)。这是用AI填充涂黑(遮罩)区域的技术，例如给图片的角色换衣服。或是反过来：让AI把图片空白的地方绘制完成(outpaint)。
+
+可以想像成让AI帮您修图，用于在图中新增或去除物件。
+
+此功能位于Img2img下的Inpaint页面。
+
+![img](images\inpaint-outpaint-1.webp)
+
+### 参数解说 
+
+- Mask blur
+
+图片上的笔刷毛边柔和程度。
+
+- Mask mode 
+
+选择要让AI填满涂黑区域(Inpaint masked)，或是填满未涂黑区域(Inpaint not masked)。
+
+- Masked content
+
+要填充的内容。
+
+- Fill：让AI参考涂黑附近的颜色填满区域。
+- Original：在填满区域的时候参考原图底下的内容。
+- latent noise：使用潜在空间填满，可能会生出跟原图完全不相关的内容。
+- latent nothing：使用潜在空间填满，不加入噪声。
+
+- Inpaint area 
+
+选择要填满整张图片(Whole picture)或是只填满涂黑的区域(Only masked)
+
+`Only masked padding, pixels`是像素内距。
+
+Only masked即外补绘制模式。
+
+### 实际操作 
+
+1. 上传图片，点选图片，用滑鼠将要替换的部份涂黑。
+2. 或者也可以切换到Inpaint Upload页面，上传图片，再于下方Mask上传涂好遮罩的图片。
+3. 假设要换成泳装，那么就在正向提示词加入`swimsuit`或`bikini`这类的提示词。
+4. 左下角的`Masked content`有几个选项：`fill`即为填充新内容，`original`则是在填充内容的时候参考原图黑色底下的内容。点选Generate生图。
+
+若要切换为外补绘制：点选左下角的Mask mode，将`Inpaint masked`改成`Inpaint not masked`，这样AI就会改为填满没有涂黑的地方。
+
+### 批次处理图片 
+
+切换到Batch页面
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/inpaint-outpaint-4.webp)
+
+第一个栏位输入要处理的图片路径，例如桌面的`Input`资料夹
+
+第二个则是输出路径
+
+第三个栏位是预先涂好遮罩的图片的路径
+
+
+
+### 额外网路 
+
+除了根据需求切换ckpt模型外，也可以额外叠几层网路(Extra networks)小模型来改善画风，并改善生成特定物件、角色的准确度。
+
+例如使用Anything模型生图，再搭配"Taiwan-doll-likeness LoRA"就能转成真人风格而不用依赖许多提示词，并且可以一次叠很多个，就像套多层滤镜一般。
+
+![img](images\extra-networks-1.webp)
+
+跟ckpt大模型比起来，这类模型档案都很小，主要用来微调现有的模型。小模型有嵌入(Embedding)、超网路(HyperNetwork)、LoRA三种，副档名以`.pt`或`.safetensors`结尾，目前最热门的为"LoRA"。更棒的是因为档案小，自行 [训练喜欢的人物模型](https://ivonblog.com/posts/stable-diffusion-webui-manuals/training/)成本并不高。
+
+###  安装小模型 
+
+[Civitai](https://civitai.com/tag/lora)有很多小模型可以下载。下载时需注意模型是哪一种。
+
+Embedding请放`stable-diffusion-webui`资料夹下的`embeddings`
+
+HyperNetwork放到`stable-diffusion-webui/models/hypernetworks`。
+
+LoRA放到`stable-diffusion-webui/models/Lora`。
+
+如果要显示小模型缩图，将图片取跟该模型一样的档名，并放到该模型的资料夹。例如在`Taiwan-doll-likeness.safetensors`所在的资料夹放一张`Taiwan-doll-likeness.png`。
+
+### 小模型使用方法 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/extra-networks/#2-小模型使用方法)
+
+1. 进入WebUI，点选右上角Show extra networks
+
+   ![img](images\extra-networks-2.webp)
+
+这样就会出现选单。以LoRA为例，点选小模型的卡片便会将其加到提示词栏位，提示词栏位会出现`< >`，表示要在绘图时使用LoRA。
+
+接着再加上其他提示词，生图即会有使用LoRA的风格。如果生出来的图片太诡异，调整提示词栏位每个LoRA后面的数字，控制权重。
+
+![img](images\extra-networks-4.webp)
+
+安装与使用VAE 
+
+VAE (variational autoencoder)可以让算出来的图片色彩更漂亮，改善图片颜色灰灰暗暗的问题。
+
+Hentai Diffusion这类模型内建VAE，SD WebUI在生图时会自动侦测并套用；Anything这类的模型要另外下载VAE；VAE的下载点通常跟模型下载页面放在一起。
+
+如果要使用VAE，下载VAE模型后，将其放到`stable-diffusion-webui/models/VAE`资料夹。
+
+接着点选Settings → Stabe Diffusion → SD VAE，选取要使用的VAE，再点选Apply Settings，此后生图就会一律使用指定的VAE。
+
+## PNG INFO
+
+SD WebUI生成的图片都是PNG档，并会记载生成图片所使用的模型、提示词等资讯。
+
+如果有人分享未修改过的SD WebUI图片，那么你只要把它下载下来，于此界面上传图片，即会显示该图片背后使用的提示词。
+
+## 放大图像分析
+
+Stable Difussion WebUI内建AI放大技术，像是ESRGAN，比Waifu2x更强。
+
+如果用预设的512x512解析度就生出不错的图，可以将图片直接丢到Extras放大。
+
+###  参数解说
+
+- Scale by
+
+按照此数字的倍数放大
+
+- Scale to
+
+放大至指定宽高
+
+- Upscaler 1 & Upscaler 2 
+
+放大图片的时候可以只用一种放大器，也可以混合使用二种放大器。
+
+- Upscaler 2 visibility
+
+第二个放大器的权重。
+
+- GFPGAN visibility
+
+GFPGAN脸部修复模型的权重
+
+- CodeFormer visibility 
+
+CodeFormer脸部修复模型的权重
+
+- Upscaler效果比较 
+
+目前Stable Diffusion WebUI的放大器包含LDSR、BSRGAN、ESRGAN_4x、R-ESRGAN-General-4xV3、R-ESRGAN-General-WDN-4xV3、R-ESRGAN-AnimeVideo、R-ESRGAN-4x+、R-ESRGAN-4x+-Anime6B、ScuNET-GAN、ScuNET-PSNR、SwinIR_4x…看的让人头昏眼花。
+
+根据Reddit网友在 [The DEFINITIVE Comparison to Upscalers](https://www.reddit.com/r/StableDiffusion/comments/y2mrc2/the_definitive_comparison_to_upscalers/)一文的比较，总结如下：
+
+- ESRGAN_4x适合用于处理真人照片
+- ESRGAN_4x适合用于绘画
+- Anime6B适合用于动漫图片，它也可以用来将真人图片转动漫风格
+
+###  实际操作
+
+切换至Extras页面，上传图片，选取放大2倍，点选下面的`Upscaler 1`中挑一个看起来顺眼的，其余维持预设，按`Generate`即会得到放大过的图片。
+
+![img](images\upscalers-1.webp)
+
+旁边的Batch Process可以一次处理大量图片；Batch from Directory则是从特定资料夹输入放大图片。
+
+## 合并模型
+
+此页面可以将最多三个的存档点模型合并，以融合出更好的效果。
+
+![img](images\checkpoint-merger-1.webp)
+
+合并模型会占用大量硬碟空间，看用途决定。有时欲生成某个人物，用基础模型搭配LoRA会是比较经济实惠的方法，不必频繁融合模型。
+
+
+
+# 训练模型
+
+## 为什么训练模型
+
+本章所讨论的训练模型仅为自用用途，若要分享训练的模型也应遵照开源的原则分享。
+
+为什么要训练自己的模型？训练自己的模型可以在现有模型的基础上，让AI懂得如何更精确生成/生成特定的风格、概念、角色、姿势、物件。
+
+举例来说，如果喂给AI十几张我精挑细选的「Hara老师绘制的、不同角度、FGO的斯卡萨哈」做训练，那么就能让AI更懂得如何生成斯卡萨哈的脸部，风格也会比较固定。
+
+以下是一个具体例子，透过使用自行训练的HyperNetwork，便改善单靠Anything模型无法生成出Hara老师画风的缺点。在不使用HyperNetwork的情况下，风格永远是左边那样；一使用HyperNetwork，右边的风格就能轻松生成出来了。
+
+![image-20230616220156875](images\image-20230616220156875.png)
+
+训练模型是复杂的议题，基于哪个现有模型，以及喂给AI学习的图片品质，还有训练时的参数，都会影响模型训练结果。
+
+本文提及的Embedding、HyperNetwork、LoRA都是「小模型」，这是相对于网路动辄好几GB的checkpoint「大模型」而言。这些小模型训练时间短，档案约几MB而已，训练成本不高。主要是用于生成特定人物/物件/画风，并且训练的模型可以多个混用。
+
+如果硬体条件许可的话，搜集大量图片训练特定领域的checkpoint大模型，再上传到HuggingFace造福他人也是不错的选项，只不过此任务过于庞大。要知道Stable Diffusion 1.5版的模型可是输入了23亿张图片训练出来的！网路上其他人训练的模型至少也准备了几万张图片。因此要生成特定的人物/物件/画风，训练小模型对一般人来说比较划算。
+
+各个模型的原理差异请参考下图。技术原理以及训练参数设定请参阅「参考资料」一章，碍于篇幅无法一一细讲，本章以操作过程为主。
+
+就训练时间与实用度而言，目前应是LoRA > HyperNetwork > Embedding
+
+本章节以AUTOMATIC1111开发的Stable Diffusion WebUI为中心撰写，因其图形化且好操作。后面简称SD WebUI。
+
+接着选择部署在本机或是云端？
+
+训练模型至少需要10GB的VRAM，也就是RTX3060等级以上的GPU。
+
+如果你有Nvidia RTX3060以上等级的GPU，那就参考 [安装教学](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/)部署在本机，想训练多久就训练多久。训练资料不到50张图片的小模型训练时间约只要1~3个小时。如果没有强力的GPU，那就用云端训练，例如 [Google Colab](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/deploy-to-google-colab/)。
+
+
+
+## 准备工作
+
+- 取得高品质图片 
+
+训练用的图片最少最少要准备10张。重质不重量。因为我要训练的是单一人物且风格固定，图片不宜有复杂背景以及其他无关人物。
+
+网路图片一张一张右键下载当然可以，不过要大量下载图片的话我会使用 [Imgrd Grabber](https://ivonblog.com/posts/imgbrd-grabber-usage/)或 [Hydrus Network](https://ivonblog.com/posts/setup-hydrus-network/)。
+
+
+
+裁切图片 
+
+下载图片后，要将训练图片裁切成512x512像素。你可以选择用SD WebUI自动裁切，或是手动裁切。
+
+-  自动裁切
+
+裁切图片不会用到显示卡计算。
+
+1. 将要裁切的图片放到同一个目录下，例如`/home/user/桌面/input`。
+2. 开启SD WebUI，进到Train → Preprocess images页面
+
+![image-20230616220354140](images\image-20230616220354140.png)
+
+1. 第一个栏位`Source directory`填写原始图片的路径
+2. 第二个栏位`Destination directory`填写输出路径，例如`/home/user/桌面/cropped`
+3. Width和Height设定为512x512
+4. 点选Preprocess ，图片即会自动裁切。在那之后原始图片就可以删除，只留下裁切后的图片。
+
+- 手动裁切
+
+手动把图片转成512x512理由是避免重要的部分被裁掉。
+
+1. 安装修图软体 [GIMP](https://www.gimp.org/)，点选档案→新增512x512像素的专案
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-3.webp)
+
+1. 点油漆桶将其漆成白色
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-4.webp)
+
+1. 将图片拖曳进画面，成为新的图层
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-5.webp)
+
+1. 点选工具→变形工具→缩放，缩放图片使其符合目前画布大小，再按Enter。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-6.webp)
+
+1. 点选档案→Export，汇出成png。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-7.webp)
+
+1. 为加快后面图片的处理速度，按右下角删除目前图层，再拖新的图片进来，重复操作。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-8.webp)
+
+1. 将33张Hara绘制的斯卡萨哈裁切后，统一放到名为`raw`的目录。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-9.webp)
+
+- 预先给图片上提示词 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/training/prepare-training-dataset/#3-預先給圖片上提示詞)
+
+接着要给图片预先上提示词，这样AI才知道要学习哪些提示词。
+
+1. 启动SD WebUI，进入Train页面。
+2. 进入Preprocess页面，`Source`输入裁切图片的路径，`Destination`填处理后图片输出的路径。
+
+![image-20230616220446520](images\image-20230616220446520.png)
+
+1. 接着勾选`Create Flipped Copies`，建立翻转图片提升训练数量。
+
+然后用Stable Diffusion训练真实图片的勾选`Use BLIP for caption`；训练动漫人物改勾选`Use DeepBooru for caption`。
+
+1. 点选Preprocess，约几分钟后便会处理完成。输出的目录里面会含有每张图片对应的提示词txt档。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/prepare-training-dataset-11.webp)
+
+1. 点选开启txt档，将你觉得无关的特征都删除，例如`2girls`这类太笼统的提示词。
+2. 至此训练资料准备完成。
+
+## 训练EMbeding
+
+Textual Inversion(文本倒置)，又称Embedding(嵌入)，适合让AI学习一个新的概念/物体。画风相较于HyperNetwork学习能力较差。
+
+Anything这类基于NovelAI制作的模型不适合拿来练Embedding，成品会很诡异。从头开始训练的Waifu Diffusion或Stable Diffusion比较适合训练Embedding，因此这里使用的基础模型为Waifu Diffusion 1.4。
+
+- 操作过程 
+
+1. 启动SD WebUI
+2. 切换至Train页面，在`Create embedding`输入名字。`Number of vectors per token`设定7以上。点选`Create embedding`。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-1.webp)
+
+1. 切换至Train页面，选择刚刚建立的embedding，于`Dataset directory`输入训练资料的路径
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-2.webp)
+
+1. `Prompt template file`选style_filewords.txt。`Mx Step`设定训练至10000步停止。当然你也可以调高一点，并看预览图决定品质差不多之后才按Interrupt中止训练，究竟要多少步数不得而知。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-3.webp)
+
+1. 点选`Train Embedding`，开始训练。
+2. SD WebUI应会显示剩余时间，通常是一小时起跳，每500步会在右边显示训练该步数的成果。
+3. 你也可以到SD WenUI根目录下的`texual_inversions`查看训练成果。里面`image_embeddings`目录会存放第几步所训练的成果。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-4.webp)
+
+1. 待训练完成后，至SD WenUI根目录下的`texual_inversions/embeddings`，对照`image_embeddings`目录的图片挑选合适的成品。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-5.webp)
+
+1. 例如觉得9500步的不错，那就将该pt档从里面挑出，将其放到SD WebUI程式目录下的`embeddings`。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-6.webp)
+
+- Embedding模型使用方式 
+
+1. 于SD WebUI的生图界面，点选右上角`Show Extra Networks`
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-7.webp)
+
+1. 接着选取要使用的embedding，点选将其加入提示词栏位。Embedding只能配合训练时使用的模型来算图。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-8.webp)
+
+1. 然后按照Embedding训练时使用的提示词下提示词，这样算出来的图便会有该Embedding的人物了。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-9.webp)
+
+
+
+## 训练hypeNetWork
+
+比起学习概念的embedding，HyperNetwork(超网路)更适合让AI学习图片整体画风。
+
+HyperNetwork我是使用Anything当基础模型来训练。
+
+- 操作过程 
+
+1. 启动SD WebUI
+2. 切换至Train页面，在`Create hypernetwork`输入名字。`Number of vectors per token`设定7以上。点选`Create hypernetwork`。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-1.webp)
+
+1. 切换至Train页面，选择刚刚建立的hypernetwork，于`Dataset directory`输入训练资料的路径。`Prompt template file`选hypernetwork.txt。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-2.webp)
+
+1. `Max Step`设定训练至10000步停止。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-3.webp)
+
+1. 最后点选`Train HyperNetwork`，开始训练。SD WebUI会显示剩余时间，HyperNetwork会比Embedding长一些。
+2. 同样可以到SD WebUI根目录下的`texual_inversions/hypernetwork`查看训练结果。里面会有`images`目录存放第几步所训练的成果。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-4.webp)
+
+1. 待训练完成后，至SD WeBUI根目录下的`texual_Inversions/hypernetworks`，对照`images`目录下的图片挑选合适的成品。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-5.webp)
+
+1. 例如觉得9500步的不错，就将pt档放到SD WebUI根目录下的`models/hypernetwork`。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-6.webp)
+
+- HyperNetwork模型使用方式 
+
+1. 于SD WebUI的生图界面，点选右上角`Show Extra Networks`
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-7.webp)
+
+1. 接着选取要使用的Hypernetwork，点选将其加入提示词栏位
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-8.webp)
+
+1. 接着再使用训练时候使用的提示词，这样算出来的图便会有该HyperNetwork的人物了，并且画风还原很佳。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-9.webp)
+
+
+
+## 训练Lora
+
+LoRA (Low-rank adaptation)是用来微调大型模型的技术，其生成的模型训练时间短，档案更小。
+
+DreamBooth内含LoRA，可作为 [SD WebUI的扩充功能](https://github.com/d8ahazard/sd_dreambooth_extension)安装。
+
+本机训练还可以用 [LoRA_Easy_Training_Scripts](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts)，支援Linux和Windows系统。
+
+有用Google Colab的采用 [Linaqruf/kohya-trainer](https://github.com/Linaqruf/kohya-trainer)会比较好上手。 [Reddit](https://www.reddit.com/r/StableDiffusion/comments/111mhsl/lora_training_guide_version_20_i_added_multiple/)有一图流教学。
+
+- 安装环境
+
+“LoRA Easy Training Scripts"这个Python程式Linux和Windows都可以用，下面以Ubuntu为例。
+
+1. 安装 [Anaconda](https://ivonblog.com/posts/linux-anaconda/)，建立虚拟环境
+
+```bash
+conda create --name loratraining python=3.10.6
+conda activate loratraining
+```
+
+1. 复制储存库
+
+```bash
+git clone https://github.com/derrian-distro/LoRA_Easy_Training_Scripts.git
+cd LoRA_Easy_Training_Scripts
+git submodule init
+git submodule update
+cd sd_scripts
+pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/cu116
+pip install --upgrade -r requirements.txt
+pip install -U xformers
+```
+
+1. 设定加速选项
+
+```bash
+accelerate config
+#依序回答：
+#- This machine
+#- No distributed training
+#- NO
+#- NO
+#- NO
+#- all
+#- fp16
+```
+
+1. LoRA的训练资料目录结构不太一样，需建立目录结构如下。已经上好提示词的训练资料要放在`img_dir`下面，将目录名称取名为`數字_概念`，目录名称前面加上数字代表要重复的步数。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-1.webp)
+
+1. 新增训练设定档`trainingconfig.json`
+
+```bash
+vim trainingconfig.json
+```
+
+1. 填入以下内容(双斜线的注解记得删除) LoRA的总训练步数计算公式为： 训练图片数量× 重复次数÷ train_batch_size × epoch
+
+```json
+{
+  //基於何種模型訓練
+  "pretrained_model_name_or_path": "/home/user/桌面/heralora/anything-v4.5-pruned.ckpt",
+  "v2": false,
+  "v_parameterization": false,
+  //紀錄檔輸出目錄
+  "logging_dir": "/home/user/桌面/heralora/log_dir/",
+  //訓練資料目錄
+  "train_data_dir": "/home/user/桌面/heralora/image_dir/",
+  //註冊目錄
+  "reg_data_dir": "/home/user/桌面/heralora/reg_dir/",
+  //輸出目錄
+  "output_dir": "/home/user/桌面/heralora/output_dir",
+  //訓練的圖片最大長寬
+  "max_resolution": "512,512",
+  //學習率
+  "learning_rate": "1e-5",
+  "lr_scheduler": "constant_with_warmup",
+  "lr_warmup": "5",
+  "train_batch_size": 3,
+  //訓練時期
+  "epoch": "4",
+  "save_every_n_epochs": "",
+  "mixed_precision": "fp16",
+  "save_precision": "fp16",
+  "seed": "",
+  "num_cpu_threads_per_process": 32,
+  "cache_latents": true,
+  "caption_extension": ".txt",
+  "enable_bucket": true,
+  "gradient_checkpointing": false,
+  "full_fp16": false,
+  "no_token_padding": false,
+  "stop_text_encoder_training": 0,
+  "use_8bit_adam": true,
+  "xformers": true,
+  "save_model_as": "safetensors",
+  "shuffle_caption": true,
+  "save_state": false,
+  "resume": "",
+  "prior_loss_weight": 1.0,
+  "text_encoder_lr": "1.5e-5",
+  "unet_lr": "1.5e-4",
+  "network_dim": 128,
+  "lora_network_weights": "",
+  "color_aug": false,
+  "flip_aug": false,
+  "clip_skip": 2,
+  "mem_eff_attn": false,
+  "output_name": "",
+  "model_list": "",
+  "max_token_length": "150",
+  "max_train_epochs": "",
+  "max_data_loader_n_workers": "",
+  "network_alpha": 128,
+  "training_comment": "",
+  "keep_tokens": 2,
+  "lr_scheduler_num_cycles": "",
+  "lr_scheduler_power": "",
+  "persistent_data_loader_workers": true,
+  "bucket_no_upscale": true,
+  "random_crop": false,
+  "caption_dropout_every_n_epochs": 0.0,
+  "caption_dropout_rate": 0
+}
+```
+
+- 开始训练 
+
+1. 有些系统需要指定CUDA安装路径
+
+```bash
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
+
+1. 输入以下指令，载入json设定档。`libnvinfer.so.7: cannot open shared object file`的警告可以暂时忽略。
+
+```bash
+accelerate launch main.py --load_json_path "/home/user/trainingconfig.json"
+```
+
+1. 之后会自动开始训练。训练好的模型位于训练设定档所写的`output_dir`目录。将`.safetensors`档移动至SD WebUI根目录下的`/models/Lora`。
+
+- LoRA模型使用方式 
+
+1. 点选SD WebUI右上角，Show extra networks
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-2.webp)
+
+1. 点选要使用的LoRA，将其加入至提示词栏位
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-3.webp)
+
+1. 再加上训练时使用的提示词，即可生成使用LoRA风格的人物。
+
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-4.webp)
