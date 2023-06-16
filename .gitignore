@@ -5,10 +5,8 @@ __pycache__
 /ESRGAN/*
 /SwinIR/*
 /repositories
-/venv
 /tmp
 /model.ckpt
-/models/**/*
 /GFPGANv1.3.pth
 /gfpgan/weights/*.pth
 /ui-config.json
@@ -29,7 +27,6 @@ notification.mp3
 /SwinIR
 /textual_inversion
 .vscode
-/extensions
 /test/stdout.txt
 /test/stderr.txt
 /cache.json*
