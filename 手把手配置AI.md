@@ -2,9 +2,13 @@
 
 安装 python  请至 [Python官网](https://www.python.org/downloads/release/python-3106/)下载的64位安装文件。`3.10.6``Python 3.10.6`,安装前务必勾选，将Python加到环境变量。 再按。`Add Python 3.10 to PATH``Install Now`
 
+<<<<<<< HEAD
 
 
 ![image-20230616141410920](images\image-20230616141410920.png)
+=======
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/windows-installation-3.webp)
+>>>>>>> 5b46de900f7f698eaaee5eeb7014e93ab0f09579
 
 安装 git  [Git for Windows](https://gitforwindows.org/) 下载安装文件，一直下一步即可。
 
@@ -54,6 +58,10 @@ git clone https://github.com/Aloereed/stable-diffusion-webui-arc-directml.git
 
 复制完成储存库后，桌面会多出文件夹。 如果你有下载模型，将刚刚下载的存档点模型放到文件夹。 这个文件夹可放入多个存档点模型文件。`stable-diffusion-webui``models\Stable-diffusion`
 
+<<<<<<< HEAD
 ![image-20230616142112631](images\image-20230616142112631.png)
+=======
+![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/windows-installation-5.webp)
+>>>>>>> 5b46de900f7f698eaaee5eeb7014e93ab0f09579
 
 #  设定启动命令行参数
