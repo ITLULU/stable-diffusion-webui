@@ -470,3 +470,7 @@ Preprocessor是先将上传的图片处理过一轮，例如`Scribbles`会将彩
 点进去，按一下First Page即会显示最近生图的结果。
 
 ![img](images\stable-diffusion-webui-images-browser-1.webp)
+
+点选单张图片，查看使用过的提示词，还可以给予星级评分。
+
+![img](images\stable-diffusion-webui-images-browser-2.webp)
