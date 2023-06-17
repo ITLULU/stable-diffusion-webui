@@ -477,6 +477,12 @@ Preprocessor是先将上传的图片处理过一轮，例如`Scribbles`会将彩
 
 
 
+## 图片生成预览
+
+插件地址
+
+https://github.com/zanllp/sd-webui-infinite-image-browsing
+
 ## mov2mov
 
 - 扩充功能来源： [Scholar01/sd-webui-mov2mov](https://github.com/Scholar01/sd-webui-mov2mov)
@@ -550,6 +556,14 @@ sd的面部编辑器。它可用于修复由 Stable Diffusion 生成的图像中
 2. 在“扩展的 git 存储库的 URL”字段中 输入“ [https://github.com/ototadana/sd-face-editor.git ”。](https://github.com/ototadana/sd-face-editor.git)
 
 https://github.com/ototadana/sd-face-editor
+
+
+
+## Multidifussion-upscaler扩展
+
+
+
+https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111/blob/main/README_CN.md
 
 
 
@@ -697,7 +711,11 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 下方的Styles列表即为储存的提示词。点选储存的提示词(可多选)，再点选上面的剪贴板图示，即会将该提示词组合加到左边的提示词栏位。
 
+# 图片预览开启
 
+到设置中开启
+
+![image-20230617192838231](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20230617192838231.png)
 
 ## 图生图
 
@@ -1354,11 +1372,7 @@ https://civitai.com/models/4514?modelVersionId=5119   Pure Eros Face  **good-loo
 ```
 正向
 A girl, walking in the forest, the sun fell on her body,
-
-补充
 (masterpiece:1,2), best quality, masterpiece, highres, original, extremely detailed wallpaper, perfect lighting,(extremely detailed CG:1.2), drawing, paintbrush,
-
-再次补充
 looking at viewer, close-up, upper body,
 
 
