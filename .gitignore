@@ -36,6 +36,9 @@ notification.mp3
 /.coverage*
 /models/
 /vscode/**
-/venv
-/extensions
+/venv/
+/extensions/
+/venv/*
+/venv/
+/extensions/
 /venv/*
