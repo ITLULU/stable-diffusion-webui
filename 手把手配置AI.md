@@ -665,6 +665,24 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 - Prompts from files or textbox：从写好提示词的档案生成图片。
 - X/Y/Z plot：用于比对不同提示词、取样方法、CFG Scale、种子码的组合所生图的效果。
 
+### 采样方式
+
+```
+
+
+**Sampler（采样器/采样方法）** 选择使用哪种采样器。 Euler a（Eular ancestral）可以以较少的步数产生很大的多样性，不同的步数可能有不同的结果。而非 ancestral 采样器都会产生基本相同的图像。DPM 相关的采样器通常具有不错的效果，但耗时也会相应增加。
+
+- - Euler 是最简单、最快的
+  - Euler a 更多样，不同步数可以生产出不同的图片。但是太高步数 (>30) 效果不会更好。
+  - DDIM 收敛快，但效率相对较低，因为需要很多 step 才能获得好的结果，适合在重绘时候使用。
+  - LMS 是 Euler 的衍生，它们使用一种相关但稍有不同的方法（平均过去的几个步骤以提高准确性）。大概 30 step 可以得到稳定结果
+  - PLMS 是 Euler 的衍生，可以更好地处理神经网络结构中的奇异性。
+  - DPM2 是一种神奇的方法，它旨在改进 DDIM，减少步骤以获得良好的结果。它需要每一步运行两次去噪，它的速度大约是 DDIM 的两倍，生图效果也非常好。但是如果你在进行调试提示词的实验，这个采样器可能会有点慢了。
+  - UniPC 效果较好且速度非常快，对平面、卡通的表现较好，推荐使用
+```
+
+
+
 ### 储存提示词 
 
 右上角可以储存与载入生图提示词。
@@ -1443,3 +1461,253 @@ NSFW, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal qua
 9：国风3 GUO feng3
 
 2.5D 实现文化输出的国风精致模型
+
+
+
+## 提示词
+
+```
+
+- 最好质量： best quality
+- 杰作： masterpiece
+- 逼真： photorealistic
+- 高细节皮肤 high detailed skin
+-  浪漫： romantic
+- 全身： full body
+- 完美： perfect
+- 8k
+- 真实： realistic
+- 实景照片： photo-realistic:1.37
+漂亮妩媚的眼睛: beautiful and charming eyes
+精致的小嘴: delicate small mouth
+标致的脸蛋: 
+beautiful face
+-看向镜头 looking at viewer 
+-特写、近距离  close-up 
+-上半身  upper body 
+原创: original
+超高清 ： ultra highres
+性感妩媚: sexy and charming
+婀娜多姿: graceful and elegant
+漂亮的日本女孩照片： Photo of Pretty Japanese woman
+细腰: slender waist
+黑头发: black hair
+头发向后挽: Hair swept back
+头发叠扎: Hair tied up
+口红  lipstick 
+```
+
+
+
+
+
+```
+
+微笑: Smile
+无与伦比的杰作: Unparalleled masterpiece
+超逼真的8K: super realistic 8K
+中国风格: chinese style
+高清晰度: High definition
+情侣: Couple
+漫步海边: strolling by the seaside
+官方艺术 official art,
+极端细节  extreme detailed
+丰富多彩： colorful
+
+
+海边：seaside
+夕阳: Sunset
+晚霞: evening glow
+天空: Sky
+云朵: Clouds
+灿烂: Radiant
+
+夫妻: Husband and wife
+一对闺蜜: A pair of best friends
+双胞胎: Twins
+1girl
+1boy
+
+没人 nobody
+有人· someone
+实景 live-action
+建筑 building
+```
+
+
+
+
+
+````
+
+(保罗·鲁本斯和丽贝卡·盖伊的风格:1.1) in the (style of paul rubens and rebecca guay:1.1) 
+(忧郁的冬雪:1.4)  (melancholy winter snow:1.4)
+腮红：  blush
+诱人的微笑:0.8 ,(seductive smile:0.8)
+星形瞳孔： star-shaped
+学生： pupils
+中国汉服： china hanfu
+发饰： hair ornament
+项链： necklace
+珠宝： jewelry
+工作室： dark studio,
+边缘照明： rim lighting
+双色调照明 two tone lighting
+单反： dslr
+偷拍： candid
+服装
+白色连衣裙: White dress
+牛仔裤: Jeans
+短裙: Short skirt
+JK: High school student (abbreviation for "joshi kōsei" in Japanese)
+学院风连衣裙: College-style dress
+复古汉服: Retro Hanfu (traditional Chinese clothing)
+
+白色 T恤: White T-shirt
+裙子: Skirt
+短裙: Short skirt
+旗袍: Cheongsam (traditional Chinese dress)
+唐朝黄色汉服: Tang Dynasty yellow Hanfu (traditional Chinese clothing)
+齐腰: At the waistline
+````
+
+
+
+```
+背对镜头: back facing the camera
+一群追踪的小朋友: a group of children being chased
+一群嬉闹的小朋友: a group of playful children
+背对镜头: back facing the camera
+高山: high mountain
+撞钟: striking a bell
+山顶: mountain top
+云层: cloud layer
+高空: high altitude
+岩石: rocks
+灌木: shrubs
+瀑布: waterfall
+流水: flowing water
+高分辨率： high resolution
+樱桃小嘴 ： cherry mouth
+```
+
+## 反向提示词
+
+```
+
+1. 衣着暴露: revealing clothing
+2. 绘画: painting
+3. 素描: sketching
+4. 低质量: low quality
+5. 低分辨率: Low resolution
+6. 单色: monochrome
+7. 灰度: grayscale
+8. 皮肤斑点: skin spots
+9. 痤疮: acne
+10. 皮肤瑕疵: skin blemishes
+11. 老年斑: age spots
+12. 多余的手指: extra fingers
+13. 少手指: Missing fingers
+14. 奇怪的手指: Abnormal fingers
+15. 坏手: Deformed hand
+16. 坏眼睛: Damaged eyes
+17. 缺腿: Missing legs
+18. 多余的手臂: Extra arms
+19. 多余的腿: Extra legs
+20. 多余的脚趾: Extra toes
+21. 阴茎: Penis
+22. 多余的四肢: Extra limbs
+23. 多余的阴道: Extra vaginas
+24. 糟糕的阴道: Poorly depicted vagina
+25. 丑陋: ugly
+26. 肥胖: obesity
+27. 厌食: Anorexia
+28. 模糊: Blurry
+29. 扭曲: Distorted
+30. 动漫: Cartoonish
+31. 毁容: Disfigurement
+32. 缺胳膊: Missing arms
+33. 多胳膊: Extra arms
+34. 多腿: Extra legs
+35. 缺腿: Missing legs
+36. 变异的手: Mutated hand
+37. 手指融合: Fused fingers
+38. 画得不好的手: Poorly drawn hand
+39. 画得不好的脚: Poorly drawn feet
+40. 画得不好的脸: Poorly drawn face
+41. 脱框: Out of frame
+42. 变异: Mutation
+43. 多余的手臂: Extra arms
+44. 变形: Deformation
+45. 身体相连: Body merging
+46. 肚脐: Belly button
+47. 低胸: Low neckline
+48. 漏胸: Exposed chest
+49. 奶头: Nipples
+50. 皮肤粗糙: Rough skin
+51. 丑陋景观: Ugly scenery
+52. 不和谐冲突: Disharmony and conflicts
+简单的背景 ：(simple background）
+单色：monochrome 
+ 低分辨率： lowres 
+ 签名： signature
+ 水印 watermark
+丑陋 ： ugly
+怀孕： pregnant
+长脖子： long neck
+变异的手： mutated hands
+画的不好的手/脸： poorly drawn face/hand
+克隆脸： cloned face
+毁容： disfigured
+丰满： plump
+重复： duplicate
+病态： morbid
+残缺： mutilated
+- 残缺: Incomplete
+变形: Deformed
+
+没穿裤子: Not wearing pants
+裸体: naked
+漏胸: exposed chest
+低质量: Low quality
+恶劣行径: Misconduct
+
+暴露皮肤: Exposed skin
+衣着暴露: Revealing clothing
+糟糕的解剖结构 : bad anatomy
+粗鄙的比例， proportions
+```
+
+
+
+## 尺寸
+
+```
+480*920
+
+512*1024
+
+640x960, 
+
+940*520 
+```
+
+## 参考网站
+
+- 利用提示词工具，以“选取”的方式完成提示词撰写
+
+  - 一个工具箱：http://www.atoolbox.net/Tool.php?Id=1101
+
+  - AI词语加速器：https://ai.dawnmark.cn/
+
+- 参考一些模型网站的例图与提示词记录网站的成品
+
+  - OpenArt：https://openart.ai/
+  - ArtHubAi：https://arthub.ai/
+  - 可以判断模型类别的网站 https://spell.novelai.dev/
+
+## 在页面上显示 VAE 设置
+
+stable-diffusion-webui 默认页面并没有显示 VAE 设置部分，所以需要先设置一下。首先点击「Settings」，然后点左侧菜单的「User interface」这个 Tab，拉到下面有个选项叫做`Quicksettings list`，在输入框里面添加`,sd_vae,CLIP_stop_at_last_layers`:
+
+![image-20230616235429072](images\image-20230616235429072.png)
