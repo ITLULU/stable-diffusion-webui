@@ -551,6 +551,10 @@ sd的面部编辑器。它可用于修复由 Stable Diffusion 生成的图像中
 
 https://github.com/ototadana/sd-face-editor
 
+
+
+
+
 # 内建功能
 
 ## 文生图
@@ -1137,154 +1141,100 @@ DreamBooth内含LoRA，可作为 [SD WebUI的扩充功能](https://github.com/d8
 
 有用Google Colab的采用 [Linaqruf/kohya-trainer](https://github.com/Linaqruf/kohya-trainer)会比较好上手。 [Reddit](https://www.reddit.com/r/StableDiffusion/comments/111mhsl/lora_training_guide_version_20_i_added_multiple/)有一图流教学。
 
-- 安装环境
 
-“LoRA Easy Training Scripts"这个Python程式Linux和Windows都可以用，下面以Ubuntu为例。
 
-1. 安装 [Anaconda](https://ivonblog.com/posts/linux-anaconda/)，建立虚拟环境
+本章也是主要参考github上的wiki https://github.com/kohya-ss/sd-scripts
 
-```bash
-conda create --name loratraining python=3.10.6
-conda activate loratraining
+
+
+首先下载python 后面安装lib依赖需要，
+
+https://github.com/Akegarasu/lora-scripts  git 下载训练工具
+
+```
+git clone https://github.com/Akegarasu/lora-scripts
+
+将sd-scripts安装到目录下
+git clone --recurse-submodules https://github.com/Akegarasu/lora-scripts
+
 ```
 
-1. 复制储存库
 
-```bash
-git clone https://github.com/derrian-distro/LoRA_Easy_Training_Scripts.git
-cd LoRA_Easy_Training_Scripts
-git submodule init
-git submodule update
-cd sd_scripts
-pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/cu116
-pip install --upgrade -r requirements.txt
-pip install -U xformers
+
+```
+需要以管理员的身份运行 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned 
 ```
 
-1. 设定加速选项
+![image-20230617111923907](images\image-20230617111923907.png)
 
-```bash
-accelerate config
-#依序回答：
-#- This machine
-#- No distributed training
-#- NO
-#- NO
-#- NO
-#- all
-#- fp16
+解除脚本运行限制，会提示是否确认,输入A
+
+
+
+```
+更新sd-script repo
+cd sd-scripts
+git pull
+.\venv\Scripts\activate
+pip install --use-pep517 --upgrade -r requirements.txt
 ```
 
-1. LoRA的训练资料目录结构不太一样，需建立目录结构如下。已经上好提示词的训练资料要放在`img_dir`下面，将目录名称取名为`數字_概念`，目录名称前面加上数字代表要重复的步数。
 
-![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-1.webp)
 
-1. 新增训练设定档`trainingconfig.json`
+powershell运行脚本,注意python先配置下本地运行的环境，git最好配置代理，跟着我的操作就可以了
 
-```bash
-vim trainingconfig.json
+![image-20230617112034758](images\image-20230617112034758.png)
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+[install]
+trusted-host=mirrors.aliyun.com
 ```
 
-1. 填入以下内容(双斜线的注解记得删除) LoRA的总训练步数计算公式为： 训练图片数量× 重复次数÷ train_batch_size × epoch
 
-```json
-{
-  //基於何種模型訓練
-  "pretrained_model_name_or_path": "/home/user/桌面/heralora/anything-v4.5-pruned.ckpt",
-  "v2": false,
-  "v_parameterization": false,
-  //紀錄檔輸出目錄
-  "logging_dir": "/home/user/桌面/heralora/log_dir/",
-  //訓練資料目錄
-  "train_data_dir": "/home/user/桌面/heralora/image_dir/",
-  //註冊目錄
-  "reg_data_dir": "/home/user/桌面/heralora/reg_dir/",
-  //輸出目錄
-  "output_dir": "/home/user/桌面/heralora/output_dir",
-  //訓練的圖片最大長寬
-  "max_resolution": "512,512",
-  //學習率
-  "learning_rate": "1e-5",
-  "lr_scheduler": "constant_with_warmup",
-  "lr_warmup": "5",
-  "train_batch_size": 3,
-  //訓練時期
-  "epoch": "4",
-  "save_every_n_epochs": "",
-  "mixed_precision": "fp16",
-  "save_precision": "fp16",
-  "seed": "",
-  "num_cpu_threads_per_process": 32,
-  "cache_latents": true,
-  "caption_extension": ".txt",
-  "enable_bucket": true,
-  "gradient_checkpointing": false,
-  "full_fp16": false,
-  "no_token_padding": false,
-  "stop_text_encoder_training": 0,
-  "use_8bit_adam": true,
-  "xformers": true,
-  "save_model_as": "safetensors",
-  "shuffle_caption": true,
-  "save_state": false,
-  "resume": "",
-  "prior_loss_weight": 1.0,
-  "text_encoder_lr": "1.5e-5",
-  "unet_lr": "1.5e-4",
-  "network_dim": 128,
-  "lora_network_weights": "",
-  "color_aug": false,
-  "flip_aug": false,
-  "clip_skip": 2,
-  "mem_eff_attn": false,
-  "output_name": "",
-  "model_list": "",
-  "max_token_length": "150",
-  "max_train_epochs": "",
-  "max_data_loader_n_workers": "",
-  "network_alpha": 128,
-  "training_comment": "",
-  "keep_tokens": 2,
-  "lr_scheduler_num_cycles": "",
-  "lr_scheduler_power": "",
-  "persistent_data_loader_workers": true,
-  "bucket_no_upscale": true,
-  "random_crop": false,
-  "caption_dropout_every_n_epochs": 0.0,
-  "caption_dropout_rate": 0
-}
-```
 
-- 开始训练 
 
-1. 有些系统需要指定CUDA安装路径
 
-```bash
-export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-```
+![image-20230617111758256](images\image-20230617111758256.png)
 
-1. 输入以下指令，载入json设定档。`libnvinfer.so.7: cannot open shared object file`的警告可以暂时忽略。
+![image-20230617112224671](images\image-20230617112224671.png)
 
-```bash
-accelerate launch main.py --load_json_path "/home/user/trainingconfig.json"
-```
+这些下载的文件你也可以在之前安装的webUi的目录下找到：
 
-1. 之后会自动开始训练。训练好的模型位于训练设定档所写的`output_dir`目录。将`.safetensors`档移动至SD WebUI根目录下的`/models/Lora`。
+![image-20230617112358626](images\image-20230617112358626.png)
 
-- LoRA模型使用方式 
+训练文件夹：创建规范，自己创建,我这里创建的目录如下  D:\AI\lora-scripts\trains\beauty\6_beauty
 
-1. 点选SD WebUI右上角，Show extra networks
 
-![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-2.webp)
 
-1. 点选要使用的LoRA，将其加入至提示词栏位
+![image-20230617111022113](images\image-20230617111022113.png)
 
-![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-3.webp)
 
-1. 再加上训练时使用的提示词，即可生成使用LoRA风格的人物。
 
-![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/lora-4.webp)
+一样的操作，对我们的图片素材进行裁剪，直接在webUi里进行操作，
+
+![image-20230617112758285](images\image-20230617112758285.png)
+
+
+
+
+
+
+
+修改配置：
+
+修改目录下的配置文件
+
+![image-20230617111611986](images\image-20230617111611986.png)
+
+![image-20230617111642623](images\image-20230617111642623.png)
+
+讲训练所需要的低模放在这个目录下：
+
+![image-20230617111444663](images\image-20230617111444663.png)
 
 
 
