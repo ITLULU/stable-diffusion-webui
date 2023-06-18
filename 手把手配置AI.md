@@ -23,9 +23,27 @@ AMD显示卡请用 [驱动程序自动检测工具](https://www.amd.com/zh-hant/
 
 Intel Arc显卡请安装 [WHQL](https://www.intel.com.tw/content/www/tw/zh/download/726609/intel-arc-iris-xe-graphics-whql-windows.html)驱动。
 
+参考下载版本：
+
+方法一： win+R打开cmd，输入nvidia-smi，查看自己显卡对应的cudb版本
+
+![image-20230618112315507](images\image-20230618112315507.png)
+
 ## 检查
 
 输入以下指令，检查目前Python版本，输出应为3.10.6
+
+python 指定下载源
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+[install]
+trusted-host=mirrors.aliyun.com
+```
+
+
 
 ```bash
 python --version
@@ -84,7 +102,8 @@ git clone https://github.com/Aloereed/stable-diffusion-webui-arc-directml.git
 其余可用引数请见 [命令列引数](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/command-line-arguments-and-settings/)
 
 ```
-set COMMANDLINE_ARGS=--enable-insecure-extension-access  --xformers --no-half-vae
+set COMMANDLINE_ARGS=--enable-insecure-extension-access  --xformers --no-half-vae --no-gradio-queue 
+
 ```
 
 ## 遇到问题
@@ -104,6 +123,8 @@ github上issue  https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9
 我这边遇到同样的问题，加上上面描述的指令后，正常了
 
 
+
+![image-20230617203156296](images\image-20230617203156296.png)
 
 # 启动Stable Diffusion WebUI 
 
@@ -133,6 +154,10 @@ cd stable-diffusion-webui
 要关闭SD WebUI，在终端机按Ctrl+C终止，再关闭视窗。日后要启动SD WebUI，只要对资料夹里面的`webui-user.bat`按二下即可(不需要用系统管理员执行)。
 
 
+
+目录结构：
+
+![image-20230618113340041](images\image-20230618113340041.png)
 
 
 
@@ -566,6 +591,12 @@ https://github.com/ototadana/sd-face-editor
 https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111/blob/main/README_CN.md
 
 
+
+Prompt-all-in-one：https://gitcode.net/ranting8323/sd-webui-prompt-all-in-one  提示词
+
+
+
+Canvas-zoom：https://github.com/richrobber2/canvas-zoom  解决图生图的画图绘的放大比例问题
 
 
 
@@ -1288,6 +1319,8 @@ https://civitai.com/models/47274  XXMix_9realistic
 
 https://civitai.com/models/25494/brabeautiful-realistic-asians-v5  Beautiful Realistic Asians
 
+braBeautifulRealistic_br[av5](https://www.bilibili.com/video/av5/?spm_id_from=333.788.video.desc.click)模型
+
 
 
 ## 动漫
@@ -1334,6 +1367,12 @@ https://civitai.com/models/81425/animeandrealisticchinese-traditional-clothing-c
 
 https://civitai.com/models/72193/yunxi  yunxi 云曦 完美世界
 
+https://civitai.com/models/80023/costumegreek-clothes  【Costume】Greek Clothes 希腊式白袍] （下载)
+
+https://civitai.com/models/31782?modelVersionId=39393  [NINEODES]Lolita [九歌]Lolita
+
+
+
 
 
 ### 人物 
@@ -1343,6 +1382,26 @@ https://civitai.com/models/33208?modelVersionId=90115  FilmGirl 胶片风 Film G
 https://civitai.com/models/77710/normal-korean-girl-face-chilloutmix-base-lora  Normal Korean girl face, Chilloutmix base lora （下载)
 
 https://civitai.com/models/44310/dream-based-on-guofeng3  梦 Dream (Based On GuoFeng3)  国风lora(下载)
+
+https://civitai.com/models/88782/cghandsomeboysw   CGhandsomeboysw
+
+https://civitai.com/models/91271/handsome-korean-20-year-old-boys  韩系少年 Handsome Korean 20-year-old boys
+
+https://civitai.com/models/11352/3lora-guofeng3lora   国风3Lora GuoFeng3_Lora 
+
+https://civitai.com/models/65124/guofeng   国风guofeng
+
+
+
+### 动漫
+
+https://civitai.com/models/16014/anime-lineart-manga-like-style   Anime Lineart / Manga-like (线稿/線画/マンガ風/漫画风) Style
+
+https://civitai.com/models/16055   沁彩 Colorwater
+
+ https://civitai.com/models/21722/vivid-impactful-style-yoneyama-mai-style-likeness-loralocon Vivid Impactful Style (Yoneyama Mai [米山 舞] Style Likeness) - LoRA/LoCon
+
+
 
 ### Embedding
 
@@ -1358,6 +1417,8 @@ https://civitai.com/models/4514?modelVersionId=5119   Pure Eros Face  **good-loo
 星空整合包：适合有一定基础的朋友，简约且全面，搭载多种插件
 
 整合包地址：https://www.bilibili.com/video/BV1MM411t7XX/
+
+
 
 
 
