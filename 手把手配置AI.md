@@ -8,14 +8,14 @@
 
 安装 python  请至 [Python官网](https://www.python.org/downloads/release/python-3106/)下载的64位安装文件。`3.10.6``Python 3.10.6`,安装前务必勾选，将Python加到环境变量。 再按。`Add Python 3.10 to PATH``Install Now`
 
-![image-20230616141410920](./images/image-20230616141410920.png)
+![image-20230616141410920](images/image-20230616141410920.png)
 =======
 
 
 
 安装 git  [Git for Windows](https://gitforwindows.org/) 下载安装文件，一直下一步即可。
 
-下载 安装显卡驱动程序
+下载 安装显卡驱动程序 
 
 Nvidia显示卡建议用 [Geforce Experience](https://www.nvidia.com/zh-tw/geforce/geforce-experience/)安装最新驱动，会顺便安装CUDA。 或者你想 [手动下载CUDA](https://developer.nvidia.com/cuda-downloads)也行。
 
@@ -27,7 +27,7 @@ Intel Arc显卡请安装 [WHQL](https://www.intel.com.tw/content/www/tw/zh/downl
 
 方法一： win+R打开cmd，输入nvidia-smi，查看自己显卡对应的cudb版本
 
-![image-20230618112315507](./images/image-20230618112315507.png)
+![image-20230618112315507](images\image-20230618112315507.png)
 
 ## 检查
 
@@ -73,15 +73,15 @@ Intel Arc显卡用户请用这个DirectML的分支：
 git clone https://github.com/Aloereed/stable-diffusion-webui-arc-directml.git
 ```
 
-复制完成储存库后，桌面会多出文件夹。 如果你有下载模型，将刚刚下载的存档点模型放到文件夹。 这个文件夹可放入多个存档点模型文件。`stable-diffusion-webui``models/Stable-diffusion`
+复制完成储存库后，桌面会多出文件夹。 如果你有下载模型，将刚刚下载的存档点模型放到文件夹。 这个文件夹可放入多个存档点模型文件。`stable-diffusion-webui``models\Stable-diffusion`
 
-![image-20230616142112631](images/image-20230616142112631.png)
+![image-20230616142112631](images\image-20230616142112631.png)
 =======
 ## 设定启动命令行参数
 
 如下图所示，对文件夹里面的按右键，以记事本打开（看不到.bat请点击文件管理视图 → 显示/隐藏 → 显示扩展名）`stable-diffusion-webui``webui-user.bat`
 
-![img](./images/windows-installation-6.webp)
+![img](images\windows-installation-6.webp)
 
 接着您想要编辑这一行启动参数。`set COMMANDLINE_ARGS=`
 
@@ -110,7 +110,7 @@ set COMMANDLINE_ARGS=--enable-insecure-extension-access  --xformers --no-half-va
 
 启动后：
 
-![image-20230616204459524](./images/image-20230616204459524.png)
+![image-20230616204459524](.\images\image-20230616204459524.png)
 
 github上issue  https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9150
 
@@ -124,9 +124,9 @@ github上issue  https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9
 
 
 
-![image-20230617203156296](./images/image-20230617203156296.png)
+![image-20230617203156296](images\image-20230617203156296.png)
 
-# 启动Stable Diffusion WebUI
+# 启动Stable Diffusion WebUI 
 
 初次启动会下载好几GB的资料，请保持网路顺畅，不要开VPN。如果您所在的地方有网路审查干扰Github连线，请想办法找代理绕过。
 
@@ -141,11 +141,11 @@ cd stable-diffusion-webui
 
 初次启动会下载依赖套件，大概要等个30分钟安装。如果在此步骤遇到错误，请先看 [常见问题](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/errors/)。
 
-![image-20230616200727257](images/image-20230616200727257.png)
+![image-20230616200727257](images\image-20230616200727257.png)
 
 启动完成后会显示一组网址。执行程式时请勿关闭终端机。
 
-![image-20230616200753872](images/image-20230616200753872.png)
+![image-20230616200753872](images\image-20230616200753872.png)
 
 用浏览器开启：`http://127.0.0.1:7860`就可进入图形界面了。执行程式时请勿关闭终端机，执行时若出错终端机也会输出讯息。
 
@@ -157,7 +157,7 @@ cd stable-diffusion-webui
 
 目录结构：
 
-![image-20230618113340041](images/image-20230618113340041.png)
+![image-20230618113340041](images\image-20230618113340041.png)
 
 
 
@@ -192,18 +192,18 @@ Stable Diffusion WebUI可以透过扩充功能将界面变成中文。如果您�
 
 双语扩充功能安装方法：在Extensions页面按`Install from URL`，填入`https://github.com/journey-ad/sd-webui-bilingual-localization`，再按`Install`。
 
-![img](images/localizations-1.webp)
+![img](images\localizations-1.webp)
 
 
 
 - 到Settings页面，找到左边的Localization，点选`zh-tw`或`zh-cn`，再点选`Apply Settings`。 之后重启WebUI，界面就会变成中文了。
 
-![img](images/localizations-2.webp)
+![img](images\localizations-2.webp)
 
 - 由于SD WebUI的扩充功能发展太快，翻译可能跟不上，建议另外安装双语对照 [sd-webui-bilingual-localization](https://github.com/journey-ad/sd-webui-bilingual-localization)，同时显示中文和英文的文字，这样看教学时就不会找无按钮了。双语扩充功能安装方法：在Extensions页面按`Install from URL`，填入`https://github.com/journey-ad/sd-webui-bilingual-localization`，再按`Install`。
 - 在启用双语扩充功能前，要到Settings → User interface → Localization设为None再重启WebUI才会生效。
 
-![img](images/localizations-3.webp)
+![img](images\localizations-3.webp)
 
 
 
@@ -213,19 +213,19 @@ Stable Diffusion WebUI可以透过扩充功能将界面变成中文。如果您�
 
 如果遇到bug，您应当优先到扩充功能开发者的储存库回报，而非直接到AUTOMATIC1111的储存库询问。
 
-- 用图形界面安装
+- 用图形界面安装 
 
-  您必须在 [命令列引数](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/command-line-arguments-and-settings/)加入`--enable-insecure-extension-access`才能从图形界面装扩充功能。
+   您必须在 [命令列引数](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/command-line-arguments-and-settings/)加入`--enable-insecure-extension-access`才能从图形界面装扩充功能。
 
 ​    最简单的方法就是点选Extensions → Available的`Load from:`，就会列出可下载安装的扩充功能，点选安装。
 
-![img](images/how-to-install-extensions-1.webp)
+![img](images\how-to-install-extensions-1.webp)
 
-有些比较新的扩充功能则是要您复制Github储存库网址，并点选选Extensions → `Install from URL`，贴上网址再按Install，它会自动完成git clone的操作。
+  有些比较新的扩充功能则是要您复制Github储存库网址，并点选选Extensions → `Install from URL`，贴上网址再按Install，它会自动完成git clone的操作。
 
-在安装扩充功能后，都要点选Installed → Apply and restart WebU，重新载入网页界面。有些则是得关掉终端机，重新启动WebUI。
+  在安装扩充功能后，都要点选Installed → Apply and restart WebU，重新载入网页界面。有些则是得关掉终端机，重新启动WebUI。
 
-如果未来要更新扩充功能，点选Installed → Check for updates，等待下载完成，然后重启WebUI。您可以在这个界面按取消打勾来停用特定的扩充功能。
+  如果未来要更新扩充功能，点选Installed → Check for updates，等待下载完成，然后重启WebUI。您可以在这个界面按取消打勾来停用特定的扩充功能。
 
 - 用指令安装
 
@@ -239,7 +239,7 @@ Stable Diffusion WebUI的扩充功能目录一律放在`extensions`资料夹。
    git clone https://github.com/benlisquare/stable-diffusion-webui-localization-zh_TW.git
    ```
 
-
+    
 
 3. 重新启动SD WebUI，即会看到新安装的扩充功能。
 
@@ -253,7 +253,7 @@ ls | xargs -I{} git -C {} pull
 Get-ChildItem | ForEach-Object { git -C $_.FullName pull }
 ```
 
-- 如何移除扩充功能
+- 如何移除扩充功能 
 
 1. 关闭Stable Diffusion WebUI的终端机。
 2. 到`stable-diffusion-webui`下的`extension`资料夹，将要移除的扩充功能资料夹删除。
@@ -279,20 +279,20 @@ Lvmin Zhang是ControlNet原始程式的开发者，Mikubill则是开发扩充功
 1. 切换至Extensions页面，点选`Install From URL`，URL输入`https://github.com/Mikubill/sd-webui-controlnet.git`，按下Install，接着从终端机按CTRL＋C，关闭Stable Diffusion WebUI。
 2. 到 [lllyasviel/ControlNet v1.1](https://huggingface.co/lllyasviel/ControlNet-v1-1/tree/main)下载以`.pth`结尾的模型档，全部档案加起来约18GB。`.yaml`档不需要下载。目前v1.1是测试版，之后会合并回 [主储存库](https://huggingface.co/lllyasviel/ControlNet)。
 
-   ![img](images/controlnet-1.webp)
+   ![img](images\controlnet-1.webp)
 
 3. 将这些模型档放到`stable-diffusion-webui/extensions/sd-webui-controlnet/models`资料
 4. 重新启动Stable Diffusion WebUI。
 
-### 各个模型的用途
+### 各个模型的用途 
 
-ControlNet现有以下模型，您可以按照需求只下载需要的模型。
+ ControlNet现有以下模型，您可以按照需求只下载需要的模型。
 
--  Anime Lineart
+-  Anime Lineart 
 
 侦测线条，生成的图片亦会保留原始的线条，适合处理动漫图像
 
-- Canny
+- Canny 
 
 侦测图片边缘，比较模糊，不如Scribbles完整。
 
@@ -304,11 +304,11 @@ ControlNet现有以下模型，您可以按照需求只下载需要的模型。
 
 侦测输入图片的光源与照明效果。
 
-- Inpaint
+- Inpaint 
 
 功能类似「内补绘制」，使用50%随机遮罩＋50%随机光流遮罩训练而成。
 
-- Instruct Pix2Pix
+- Instruct Pix2Pix 
 
 模型档名为`ip2p`，类似「图生图」，但是使用训练50%的指示(instruction)提示词和50%的叙述(description)提示词训练而成。因为是ControlNet，使用此模型时不需要调整CFG Scale。
 
@@ -320,29 +320,29 @@ ControlNet现有以下模型，您可以按照需求只下载需要的模型。
 
 侦测线条，适合处理线稿，生成的图片亦会保留原始的线条。
 
-- M-LSD
+- M-LSD 
 
 侦测输入图片的直线。
 
 - Normalbae
 
-- Openpose
+- Openpose 
 
 使用OpenPose技术侦测输入图片人物的动作，不一定会保留线条。
 
-- Scribbles
+- Scribbles 
 
 侦测线条，侦测到的线条品质介于Soft Edge和Lineart之间。
 
-- Segmentation
+- Segmentation 
 
 模型档名为`seg`，将侦测的图片物件切成一个一个色块处理，例如房子一个色块，后面的天空一个色块。
 
-- Shuffle
+- Shuffle 
 
 把输入图片的概念转移到生成的图片。
 
-- Soft Edge
+- Soft Edge 
 
 侦测图片边缘，效果较为柔和，像用炭笔涂过。
 
@@ -354,7 +354,7 @@ ControlNet现有以下模型，您可以按照需求只下载需要的模型。
 
 在安装之后，WebUI的界面会多出"ControlNet"的按钮。
 
-![img](images/controlnet-2.webp)
+![img](images\controlnet-2.webp)
 
 点开会看到以下选项：
 
@@ -374,7 +374,7 @@ ControlNet现有以下模型，您可以按照需求只下载需要的模型。
 
 在Open New Canvas的选项下面有四个按钮。
 
-![img](images/controlnet-3.webp)
+![img](images\controlnet-3.webp)
 
 由左到右：新增画布；使用电脑镜头拍照上传；未知；还原上次算图设定。
 
@@ -446,7 +446,7 @@ ControlNet在生图时的权重。
 
 要启用Multi ControlNet，请进入Settings → ControlNet，拖动拉杆，设定要启用的ControlNet数量。
 
-![img](images/controlnet-4.webp)
+![img](images\controlnet-4.webp)
 
 ### 实际操作 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/extensions/controlnet/#4-實際操作)
 
@@ -454,21 +454,21 @@ ControlNet在生图时的权重。
 
 1. 在安装之后，WebUI的界面会多出"ControlNet"的按钮。
 
-![img](images/controlnet-5.webp)
+![img](images\controlnet-5.webp)
 
 1. 进入文生图的页面填入提示词，接着点开下面ControlNet的界面，勾选`Enabled`启用ControlNet，上传图片。勾选LowVRAM可降低VRAM占用。
 
-![img](images/controlnet-6.webp)
+![img](images\controlnet-6.webp)
 
 1. 接着选取要使用的Preprocessor和Model，二者要一致。
 
 Preprocessor是先将上传的图片处理过一轮，例如`Scribbles`会将彩色图片转成线稿。如果你的图片不需要处理，则Preprocessor可留空。
 
-![img](images/controlnet-7.webp)
+![img](images\controlnet-7.webp)
 
 1. 以Scribbles为例，选取后点选右上角Generate即会生成出结果，并附上侦测到的线条。如下图所示，右边贞德的姿势确实跟左边的02十分类似。
 
-![img](images/controlnet-8.webp)
+![img](images\controlnet-8.webp)
 
 ##  提示词自动补齐
 
@@ -476,7 +476,7 @@ Preprocessor是先将上传的图片处理过一轮，例如`Scribbles`会将彩
 
 输入提示词的时候提示相关Danbooru上的标签，画动漫图的时候很有用，还可以安装中文标签翻译
 
-![img](images/a1111-sd-webui-tagcomplete-1.webp)
+![img](images\a1111-sd-webui-tagcomplete-1.webp)
 
 进入Extensions页面，点选`Install from URL`，输入网址`https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git`，按`Install`，之后重启WebUI。
 
@@ -494,11 +494,11 @@ Preprocessor是先将上传的图片处理过一轮，例如`Scribbles`会将彩
 
 点进去，按一下First Page即会显示最近生图的结果。
 
-![img](images/stable-diffusion-webui-images-browser-1.webp)
+![img](images\stable-diffusion-webui-images-browser-1.webp)
 
 点选单张图片，查看使用过的提示词，还可以给予星级评分。
 
-![img](images/stable-diffusion-webui-images-browser-2.webp)
+![img](images\stable-diffusion-webui-images-browser-2.webp)
 
 
 
@@ -520,15 +520,15 @@ https://github.com/zanllp/sd-webui-infinite-image-browsing
 
 切换到mov2mov页面，输入提示词, 再上传影片。
 
-![img](images/mov2mov-1.webp)
+![img](images\mov2mov-1.webp)
 
-在下面设定输出影片的长宽。生图的长宽比例应与原始影片一致。
+ 在下面设定输出影片的长宽。生图的长宽比例应与原始影片一致。
 
-![img](images/mov2mov-2.webp)
+![img](images\mov2mov-2.webp)
 
 最下面是单独用ControlNet处理人物的选项，可以改善动作侦测的精度。
 
-![img](images/mov2mov-3.webp)
+![img](images\mov2mov-3.webp)
 
 点选右上角Generate，即会开始生成。成品位于主程式下的`/outputs/mov2mov-images`目录。
 
@@ -538,11 +538,11 @@ https://github.com/zanllp/sd-webui-infinite-image-browsing
 
 此扩充功能给Stable Diffusion WebUI新增一个监控系统信息的页面，显示主程序版本、系统信息、GPU、RAM、使用的模型、使用的命令列参数等等。
 
-![img](images/sd-extension-system-info-1.webp)
+![img](images\sd-extension-system-info-1.webp)
 
 点击下面的Run benchmark可以跑分测试系统性能，有助于评估主程序更新后性能是否有变化。 点击Submit results将结果回报到 [Vladimir Mandic的网站](https://vladmandic.github.io/sd-extension-system-info/pages/benchmark.html)。
 
-![img](images/sd-extension-system-info-2.webp)
+![img](images\sd-extension-system-info-2.webp)
 
 ## 骨架人偶
 
@@ -556,9 +556,9 @@ PoseX是可以在Stable Diffuison WebUI直接拉人物骨架，再配合ControlN
 
 1. 切换至Extensions页面，点选Install From URL，URL输入`https://github.com/hnmr293/posex.git`，按下Install。接着重启WebUI。
 2. 开启文生图的页面，点选右下角PoseX，点选Send this image to ControlNet
-3. 在下面的ControlNet，点选Enabled，preprocessor选取`none`，model选`openpose`，不需要上传图片。![img](images/posex-3.webp)
-4. 回到上面的PoseX，调整人物姿势。左键点选移动，滚轮放大缩小，对模型左键点二下即可用右键移动单个骨架。![img](images/posex-4.webp)
-5. 填入正负向提示词，即会按照PoseX的姿势来生成图片。![img](images/posex-5.webp)
+3. 在下面的ControlNet，点选Enabled，preprocessor选取`none`，model选`openpose`，不需要上传图片。![img](images\posex-3.webp)
+4. 回到上面的PoseX，调整人物姿势。左键点选移动，滚轮放大缩小，对模型左键点二下即可用右键移动单个骨架。![img](images\posex-4.webp)
+5. 填入正负向提示词，即会按照PoseX的姿势来生成图片。![img](images\posex-5.webp)
 
 
 
@@ -670,7 +670,7 @@ DDIM和PLMS是2022年随Stable Diffusion v1发表的取样方法。
 
 其余可用的宽高比(ratio)请参考下表。 [图片来源](https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/1025#discussioncomment-3727588)
 
-![img](images/text-to-image-2.webp)
+![img](images\text-to-image-2.webp)
 
 - CFG Scale [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/features/text-to-image/#cfg-scale)
 
@@ -732,7 +732,7 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 
 
-### 储存提示词
+### 储存提示词 
 
 右上角可以储存与载入生图提示词。
 
@@ -746,7 +746,7 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 到设置中开启
 
-![image-20230617192838231](images/image-20230617192838231.png)
+![image-20230617192838231](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20230617192838231.png)
 
 ## 图生图
 
@@ -756,7 +756,7 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 这个功能位于「Img2img」的页签。
 
-### 参数解说
+### 参数解说 
 
 部份参数与文生图的参数重叠，这里不赘述。
 
@@ -787,7 +787,7 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 上传图片后，用Danbooru图库资料判别图片并自动填入提示词。需要注意Deepboooru训练的图像数量有限，它顶多只能用来认图片的场景和人物tag，无法准确标出最新的动漫角色。
 
-![img](images/image-to-image-2.webp)
+![img](images\image-to-image-2.webp)
 
 初次使用的时候，Stable Diffusion WebUI会自动下载模型。
 
@@ -803,15 +803,15 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 此功能位于Img2img下的Inpaint页面。
 
-![img](images/inpaint-outpaint-1.webp)
+![img](images\inpaint-outpaint-1.webp)
 
-### 参数解说
+### 参数解说 
 
 - Mask blur
 
 图片上的笔刷毛边柔和程度。
 
-- Mask mode
+- Mask mode 
 
 选择要让AI填满涂黑区域(Inpaint masked)，或是填满未涂黑区域(Inpaint not masked)。
 
@@ -824,7 +824,7 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 - latent noise：使用潜在空间填满，可能会生出跟原图完全不相关的内容。
 - latent nothing：使用潜在空间填满，不加入噪声。
 
-- Inpaint area
+- Inpaint area 
 
 选择要填满整张图片(Whole picture)或是只填满涂黑的区域(Only masked)
 
@@ -832,7 +832,7 @@ AI生图与你给的提示词的相关度，数值越高越会按照你说的内
 
 Only masked即外补绘制模式。
 
-### 实际操作
+### 实际操作 
 
 1. 上传图片，点选图片，用滑鼠将要替换的部份涂黑。
 2. 或者也可以切换到Inpaint Upload页面，上传图片，再于下方Mask上传涂好遮罩的图片。
@@ -841,7 +841,7 @@ Only masked即外补绘制模式。
 
 若要切换为外补绘制：点选左下角的Mask mode，将`Inpaint masked`改成`Inpaint not masked`，这样AI就会改为填满没有涂黑的地方。
 
-### 批次处理图片
+### 批次处理图片 
 
 切换到Batch页面
 
@@ -855,17 +855,17 @@ Only masked即外补绘制模式。
 
 
 
-### 额外网路
+### 额外网路 
 
 除了根据需求切换ckpt模型外，也可以额外叠几层网路(Extra networks)小模型来改善画风，并改善生成特定物件、角色的准确度。
 
 例如使用Anything模型生图，再搭配"Taiwan-doll-likeness LoRA"就能转成真人风格而不用依赖许多提示词，并且可以一次叠很多个，就像套多层滤镜一般。
 
-![img](images/extra-networks-1.webp)
+![img](images\extra-networks-1.webp)
 
 跟ckpt大模型比起来，这类模型档案都很小，主要用来微调现有的模型。小模型有嵌入(Embedding)、超网路(HyperNetwork)、LoRA三种，副档名以`.pt`或`.safetensors`结尾，目前最热门的为"LoRA"。更棒的是因为档案小，自行 [训练喜欢的人物模型](https://ivonblog.com/posts/stable-diffusion-webui-manuals/training/)成本并不高。
 
-###  安装小模型
+###  安装小模型 
 
 [Civitai](https://civitai.com/tag/lora)有很多小模型可以下载。下载时需注意模型是哪一种。
 
@@ -881,15 +881,15 @@ LoRA放到`stable-diffusion-webui/models/Lora`。
 
 1. 进入WebUI，点选右上角Show extra networks
 
-   ![img](images/extra-networks-2.webp)
+   ![img](images\extra-networks-2.webp)
 
 这样就会出现选单。以LoRA为例，点选小模型的卡片便会将其加到提示词栏位，提示词栏位会出现`< >`，表示要在绘图时使用LoRA。
 
 接着再加上其他提示词，生图即会有使用LoRA的风格。如果生出来的图片太诡异，调整提示词栏位每个LoRA后面的数字，控制权重。
 
-![img](images/extra-networks-4.webp)
+![img](images\extra-networks-4.webp)
 
-安装与使用VAE
+安装与使用VAE 
 
 VAE (variational autoencoder)可以让算出来的图片色彩更漂亮，改善图片颜色灰灰暗暗的问题。
 
@@ -921,7 +921,7 @@ Stable Difussion WebUI内建AI放大技术，像是ESRGAN，比Waifu2x更强。
 
 放大至指定宽高
 
-- Upscaler 1 & Upscaler 2
+- Upscaler 1 & Upscaler 2 
 
 放大图片的时候可以只用一种放大器，也可以混合使用二种放大器。
 
@@ -933,11 +933,11 @@ Stable Difussion WebUI内建AI放大技术，像是ESRGAN，比Waifu2x更强。
 
 GFPGAN脸部修复模型的权重
 
-- CodeFormer visibility
+- CodeFormer visibility 
 
 CodeFormer脸部修复模型的权重
 
-- Upscaler效果比较
+- Upscaler效果比较 
 
 目前Stable Diffusion WebUI的放大器包含LDSR、BSRGAN、ESRGAN_4x、R-ESRGAN-General-4xV3、R-ESRGAN-General-WDN-4xV3、R-ESRGAN-AnimeVideo、R-ESRGAN-4x+、R-ESRGAN-4x+-Anime6B、ScuNET-GAN、ScuNET-PSNR、SwinIR_4x…看的让人头昏眼花。
 
@@ -951,7 +951,7 @@ CodeFormer脸部修复模型的权重
 
 切换至Extras页面，上传图片，选取放大2倍，点选下面的`Upscaler 1`中挑一个看起来顺眼的，其余维持预设，按`Generate`即会得到放大过的图片。
 
-![img](images/upscalers-1.webp)
+![img](images\upscalers-1.webp)
 
 旁边的Batch Process可以一次处理大量图片；Batch from Directory则是从特定资料夹输入放大图片。
 
@@ -959,7 +959,7 @@ CodeFormer脸部修复模型的权重
 
 此页面可以将最多三个的存档点模型合并，以融合出更好的效果。
 
-![img](images/checkpoint-merger-1.webp)
+![img](images\checkpoint-merger-1.webp)
 
 合并模型会占用大量硬碟空间，看用途决定。有时欲生成某个人物，用基础模型搭配LoRA会是比较经济实惠的方法，不必频繁融合模型。
 
@@ -977,7 +977,7 @@ CodeFormer脸部修复模型的权重
 
 以下是一个具体例子，透过使用自行训练的HyperNetwork，便改善单靠Anything模型无法生成出Hara老师画风的缺点。在不使用HyperNetwork的情况下，风格永远是左边那样；一使用HyperNetwork，右边的风格就能轻松生成出来了。
 
-![image-20230616220156875](images/image-20230616220156875.png)
+![image-20230616220156875](images\image-20230616220156875.png)
 
 训练模型是复杂的议题，基于哪个现有模型，以及喂给AI学习的图片品质，还有训练时的参数，都会影响模型训练结果。
 
@@ -1001,7 +1001,7 @@ CodeFormer脸部修复模型的权重
 
 ## 准备工作
 
-- 取得高品质图片
+- 取得高品质图片 
 
 训练用的图片最少最少要准备10张。重质不重量。因为我要训练的是单一人物且风格固定，图片不宜有复杂背景以及其他无关人物。
 
@@ -1009,7 +1009,7 @@ CodeFormer脸部修复模型的权重
 
 
 
-裁切图片
+裁切图片 
 
 下载图片后，要将训练图片裁切成512x512像素。你可以选择用SD WebUI自动裁切，或是手动裁切。
 
@@ -1020,7 +1020,7 @@ CodeFormer脸部修复模型的权重
 1. 将要裁切的图片放到同一个目录下，例如`/home/user/桌面/input`。
 2. 开启SD WebUI，进到Train → Preprocess images页面
 
-![image-20230616220354140](images/image-20230616220354140.png)
+![image-20230616220354140](images\image-20230616220354140.png)
 
 1. 第一个栏位`Source directory`填写原始图片的路径
 2. 第二个栏位`Destination directory`填写输出路径，例如`/home/user/桌面/cropped`
@@ -1066,7 +1066,7 @@ CodeFormer脸部修复模型的权重
 1. 启动SD WebUI，进入Train页面。
 2. 进入Preprocess页面，`Source`输入裁切图片的路径，`Destination`填处理后图片输出的路径。
 
-![image-20230616220446520](images/image-20230616220446520.png)
+![image-20230616220446520](images\image-20230616220446520.png)
 
 1. 接着勾选`Create Flipped Copies`，建立翻转图片提升训练数量。
 
@@ -1085,7 +1085,7 @@ Textual Inversion(文本倒置)，又称Embedding(嵌入)，适合让AI学习一
 
 Anything这类基于NovelAI制作的模型不适合拿来练Embedding，成品会很诡异。从头开始训练的Waifu Diffusion或Stable Diffusion比较适合训练Embedding，因此这里使用的基础模型为Waifu Diffusion 1.4。
 
-- 操作过程
+- 操作过程 
 
 1. 启动SD WebUI
 2. 切换至Train页面，在`Create embedding`输入名字。`Number of vectors per token`设定7以上。点选`Create embedding`。
@@ -1114,7 +1114,7 @@ Anything这类基于NovelAI制作的模型不适合拿来练Embedding，成品�
 
 ![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/embedding-6.webp)
 
-- Embedding模型使用方式
+- Embedding模型使用方式 
 
 1. 于SD WebUI的生图界面，点选右上角`Show Extra Networks`
 
@@ -1136,7 +1136,7 @@ Anything这类基于NovelAI制作的模型不适合拿来练Embedding，成品�
 
 HyperNetwork我是使用Anything当基础模型来训练。
 
-- 操作过程
+- 操作过程 
 
 1. 启动SD WebUI
 2. 切换至Train页面，在`Create hypernetwork`输入名字。`Number of vectors per token`设定7以上。点选`Create hypernetwork`。
@@ -1164,7 +1164,7 @@ HyperNetwork我是使用Anything当基础模型来训练。
 
 ![img](https://ivonblog.com/posts/stable-diffusion-webui-manuals/images/hypernetwork-6.webp)
 
-- HyperNetwork模型使用方式
+- HyperNetwork模型使用方式 
 
 1. 于SD WebUI的生图界面，点选右上角`Show Extra Networks`
 
@@ -1215,7 +1215,7 @@ git clone --recurse-submodules https://github.com/Akegarasu/lora-scripts
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned 
 ```
 
-![image-20230617111923907](images/image-20230617111923907.png)
+![image-20230617111923907](images\image-20230617111923907.png)
 
 解除脚本运行限制，会提示是否确认,输入A
 
@@ -1233,7 +1233,7 @@ pip install --use-pep517 --upgrade -r requirements.txt
 
 powershell运行脚本,注意python先配置下本地运行的环境，git最好配置代理，跟着我的操作就可以了
 
-![image-20230617112034758](images/image-20230617112034758.png)
+![image-20230617112034758](images\image-20230617112034758.png)
 
 ```
 [global]
@@ -1247,25 +1247,25 @@ trusted-host=mirrors.aliyun.com
 
 
 
-![image-20230617111758256](images/image-20230617111758256.png)
+![image-20230617111758256](images\image-20230617111758256.png)
 
-![image-20230617112224671](images/image-20230617112224671.png)
+![image-20230617112224671](images\image-20230617112224671.png)
 
 这些下载的文件你也可以在之前安装的webUi的目录下找到：
 
-![image-20230617112358626](images/image-20230617112358626.png)
+![image-20230617112358626](images\image-20230617112358626.png)
 
-训练文件夹：创建规范，自己创建,我这里创建的目录如下  D:\AI\lora-scripts\trains/beauty/6_beauty
+训练文件夹：创建规范，自己创建,我这里创建的目录如下  D:\AI\lora-scripts\trains\beauty\6_beauty
 
 
 
-![image-20230617111022113](images/image-20230617111022113.png)
+![image-20230617111022113](images\image-20230617111022113.png)
 
 
 
 一样的操作，对我们的图片素材进行裁剪，直接在webUi里进行操作，
 
-![image-20230617112758285](images/image-20230617112758285.png)
+![image-20230617112758285](images\image-20230617112758285.png)
 
 
 
@@ -1277,13 +1277,13 @@ trusted-host=mirrors.aliyun.com
 
 修改目录下的配置文件
 
-![image-20230617111611986](images/image-20230617111611986.png)
+![image-20230617111611986](images\image-20230617111611986.png)
 
-![image-20230617111642623](images/image-20230617111642623.png)
+![image-20230617111642623](images\image-20230617111642623.png)
 
 讲训练所需要的低模放在这个目录下：
 
-![image-20230617111444663](images/image-20230617111444663.png)
+![image-20230617111444663](images\image-20230617111444663.png)
 
 
 
@@ -1303,7 +1303,7 @@ https://civitai.com/models/18523/magmix  MagMix (下载)
 
 https://civitai.com/models/71734 Dayu_AisaMIX__v1
 
-https://civitai.com/models/9052 LOFI   增强线条
+https://civitai.com/models/9052 LOFI   增强线条 
 
 https://civitai.com/models/48524/LEAU  LEAU
 
@@ -1311,7 +1311,7 @@ https://civitai.com/models/22922/lyriel   Lyriel
 
 https://civitai.com/models/59341?modelVersionId=65309    融入了GuoFeng3.2, fashionGirl_v52, chilloutmixss30_v30, iu_V35, koreanDollLikeness_v15.
 
-https://civitai.com/models/4201  Paragon
+https://civitai.com/models/4201  Paragon 
 
 https://civitai.com/models/3627   Protogen v2.2 (Anime) Official Release
 
@@ -1325,7 +1325,7 @@ braBeautifulRealistic_br[av5](https://www.bilibili.com/video/av5/?spm_id_from=33
 
 ## 动漫
 
-https://civitai.com/models/9409/or-anything-v5ink Anything
+https://civitai.com/models/9409/or-anything-v5ink Anything 
 
 https://civitai.com/models/14305/heavenorangemix  HeavenOrangeMix
 
@@ -1375,7 +1375,7 @@ https://civitai.com/models/31782?modelVersionId=39393  [NINEODES]Lolita [九歌]
 
 
 
-### 人物
+### 人物 
 
 https://civitai.com/models/33208?modelVersionId=90115  FilmGirl 胶片风 Film Grain LoRA & LoHA  (FilmVelvia2.safetensors下载）
 
@@ -1387,7 +1387,7 @@ https://civitai.com/models/88782/cghandsomeboysw   CGhandsomeboysw
 
 https://civitai.com/models/91271/handsome-korean-20-year-old-boys  韩系少年 Handsome Korean 20-year-old boys
 
-https://civitai.com/models/11352/3lora-guofeng3lora   国风3Lora GuoFeng3_Lora
+https://civitai.com/models/11352/3lora-guofeng3lora   国风3Lora GuoFeng3_Lora 
 
 https://civitai.com/models/65124/guofeng   国风guofeng
 
@@ -1399,7 +1399,7 @@ https://civitai.com/models/16014/anime-lineart-manga-like-style   Anime Lineart 
 
 https://civitai.com/models/16055   沁彩 Colorwater
 
-https://civitai.com/models/21722/vivid-impactful-style-yoneyama-mai-style-likeness-loralocon Vivid Impactful Style (Yoneyama Mai [米山 舞] Style Likeness) - LoRA/LoCon
+ https://civitai.com/models/21722/vivid-impactful-style-yoneyama-mai-style-likeness-loralocon Vivid Impactful Style (Yoneyama Mai [米山 舞] Style Likeness) - LoRA/LoCon
 
 
 
@@ -1465,7 +1465,7 @@ NSFW, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal qua
 
 发布 civitail.com/models/4201
 
-6：LOFI
+6：LOFI 
 
 真实类， 精致照片级任务专精模型
 
@@ -1721,18 +1721,18 @@ JK: High school student (abbreviation for "joshi kōsei" in Japanese)
 
 - 利用提示词工具，以“选取”的方式完成提示词撰写
 
-    - 一个工具箱：http://www.atoolbox.net/Tool.php?Id=1101
+  - 一个工具箱：http://www.atoolbox.net/Tool.php?Id=1101
 
-    - AI词语加速器：https://ai.dawnmark.cn/
+  - AI词语加速器：https://ai.dawnmark.cn/
 
 - 参考一些模型网站的例图与提示词记录网站的成品
 
-    - OpenArt：https://openart.ai/
-    - ArtHubAi：https://arthub.ai/
-    - 可以判断模型类别的网站 https://spell.novelai.dev/
+  - OpenArt：https://openart.ai/
+  - ArtHubAi：https://arthub.ai/
+  - 可以判断模型类别的网站 https://spell.novelai.dev/
 
 ## 在页面上显示 VAE 设置
 
 stable-diffusion-webui 默认页面并没有显示 VAE 设置部分，所以需要先设置一下。首先点击「Settings」，然后点左侧菜单的「User interface」这个 Tab，拉到下面有个选项叫做`Quicksettings list`，在输入框里面添加`,sd_vae,CLIP_stop_at_last_layers`:
 
-![image-20230616235429072](images/image-20230616235429072.png)
+![image-20230616235429072](images\image-20230616235429072.png)
