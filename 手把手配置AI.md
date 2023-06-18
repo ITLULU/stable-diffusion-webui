@@ -110,7 +110,7 @@ set COMMANDLINE_ARGS=--enable-insecure-extension-access  --xformers --no-half-va
 
 启动后：
 
-![image-20230616204459524](images\image-20230616204459524.png)
+![image-20230616204459524](.\images\image-20230616204459524.png)
 
 github上issue  https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9150
 
