@@ -8,7 +8,7 @@
 
 安装 python  请至 [Python官网](https://www.python.org/downloads/release/python-3106/)下载的64位安装文件。`3.10.6``Python 3.10.6`,安装前务必勾选，将Python加到环境变量。 再按。`Add Python 3.10 to PATH``Install Now`
 
-![image-20230616141410920](./images/image-20230616141410920.png)
+![image-20230616141410920](images/image-20230616141410920.png)
 =======
 
 
