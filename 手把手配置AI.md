@@ -27,7 +27,7 @@ Intel Arc显卡请安装 [WHQL](https://www.intel.com.tw/content/www/tw/zh/downl
 
 方法一： win+R打开cmd，输入nvidia-smi，查看自己显卡对应的cudb版本
 
-![image-20230618112315507](./images\image-20230618112315507.png)
+![image-20230618112315507](images\image-20230618112315507.png)
 
 ## 检查
 
