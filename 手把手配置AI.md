@@ -1,7 +1,3 @@
-参考网站： [🖥️ 安装至Windows | Stable Diffusion WebUI使用手册（正体中文）|Ivon的部落格 (ivonblog.com)](https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/windows-installation/#4-設定啟動命令列引數)
-
-
-
 # 前提准备
 
 
@@ -261,7 +257,7 @@ Get-ChildItem | ForEach-Object { git -C $_.FullName pull }
 
 ## ControlNet 按照骨架画图
 
-- 扩充功能来源： [Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet)
+- 插件安装来源： [Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet) 
 - ControlNet的储存库： [lllyasviel/ControlNet](https://github.com/lllyasviel/ControlNet)
 
 目前版本：ControlNet v1.1
@@ -273,6 +269,10 @@ ControlNet是通过加入额外条件来控制扩散模型的神经网路结构�
 ControlNet的用法还有：上传人体骨架线条，ControlNet就能按骨架的动作生成完稿的人物图片。或是上传素色的3D建模，让ControlNet彩现成为室内布置家具。
 
 Lvmin Zhang是ControlNet原始程式的开发者，Mikubill则是开发扩充功能，让我们可以在Stable Diffusion WebUI用ControlNet生图。
+
+
+
+ControlNet模型下载huggingface：https://huggingface.co/Hetaneko/Controlnet-models/tree/main/controlnet_safetensors 
 
 ### 安装ControlNet与下载模型 [#](https://ivonblog.com/posts/stable-diffusion-webui-manuals/extensions/controlnet/#1-安裝controlnet與下載模型)
 
@@ -531,6 +531,10 @@ https://github.com/zanllp/sd-webui-infinite-image-browsing
 ![img](images/mov2mov-3.webp)
 
 点选右上角Generate，即会开始生成。成品位于主程式下的`/outputs/mov2mov-images`目录。
+
+
+
+
 
 ## 监控系统
 
